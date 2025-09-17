@@ -1,9 +1,8 @@
 /**
- * Title of Project
- * Author Name
+ * Creating Variables
+ * Nerly Cadet
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * Experimenting with creating variables
  */
 
 "use strict";
