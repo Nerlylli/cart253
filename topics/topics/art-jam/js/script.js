@@ -22,7 +22,7 @@ function draw() {
     // Pink pastel background
     background(255, 207, 248);
 
-    // Trying to make a head
+    // Making a head
     push();
     fill('white');
     noStroke();
@@ -35,5 +35,10 @@ function draw() {
     ellipse(340, 380, 75, 55);
     pop();
 
-
+    // Making the neck
+    push();
+    fill('white');
+    noStroke();
+    rect(280, 380, 65, 50);
+    pop();
 }
