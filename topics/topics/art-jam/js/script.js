@@ -25,6 +25,7 @@ function draw() {
     // Making a head
     //1. Circle
     push();
+    noStroke();
     fill('white');
     ellipse(370, 250, 400);
     pop();
@@ -33,13 +34,15 @@ function draw() {
     push();
     //Rotate the jaw
     rotate(75);
-    rect(-15, 387, 200, 150);
+    noStroke();
+    rect(15, 387, 200, 150);
     pop();
 
     //3. Neck
     push();
     //Rotate the neck
     rotate(50);
+    noStroke();
     rect(175, 495, 100, 200);
     pop();
 
@@ -53,4 +56,10 @@ function draw() {
     push();
     rect(185, 232, 75, 20);
     pop();
+
+    //6. Attempting to make an eye
+    push();
+    triangle(220, 310, 220, 350, 280, 310);
+    pop();
+
 };
