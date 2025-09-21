@@ -57,7 +57,7 @@ function draw() {
     rect(185, 232, 75, 20);
     pop();
 
-    //6. Attempting to make an eye
+    //6. Eye
     push();
     triangle(220, 310, 220, 350, 280, 310);
     pop();
