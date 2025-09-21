@@ -24,9 +24,16 @@ function draw() {
 
     // Trying to make a head
     push();
-    fill('transparent');
+    fill('white');
     noStroke();
-    ellipse(220, 250, 150);
+    ellipse(320, 320, 150);
     pop();
+
+    push();
+    fill('white');
+    noStroke();
+    ellipse(340, 380, 75, 55);
+    pop();
+
 
 }
