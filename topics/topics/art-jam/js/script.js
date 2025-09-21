@@ -1,24 +1,24 @@
 /**
- * Title of Project
- * Author Name
+ * Art Jam
+ * Nerly Cadet
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * The main goal is to make a pixelated unicorn version of myself. 
  */
 
 "use strict";
 
 /**
- * OH LOOK I DIDN'T DESCRIBE SETUP!!
+ * Create Canvas
 */
 function setup() {
-
+    createCanvas(640, 640);
 }
 
 
 /**
- * OOPS I DIDN'T DESCRIBE WHAT MY DRAW DOES!
+ * Draws a pixelated unicorn
 */
 function draw() {
+    background(255, 207, 248);
 
 }
