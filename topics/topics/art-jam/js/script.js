@@ -41,4 +41,42 @@ function draw() {
     noStroke();
     rect(280, 380, 65, 50);
     pop();
+
+    // Making the body 
+    //Part 1: left shoulder
+    push();
+    fill('white');
+    noStroke();
+    ellipse(280, 430, 30);
+    pop();
+
+    push();
+    fill('white');
+    noStroke();
+    ellipse(270, 445, 30);
+    pop();
+
+    push();
+    fill('white');
+    noStroke();
+    ellipse(285, 445, 30);
+    pop();
+
+    push();
+    fill('white');
+    noStroke();
+    ellipse(285, 460, 30);
+    pop();
+
+    push();
+    fill('white');
+    noStroke();
+    ellipse(265, 460, 30);
+    pop();
+
+    push();
+    fill('white');
+    noStroke();
+    ellipse(275, 470, 30);
+    pop();
 }
