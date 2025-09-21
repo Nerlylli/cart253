@@ -43,4 +43,14 @@ function draw() {
     rect(175, 495, 100, 200);
     pop();
 
+    // Adding the face features
+    //4. Ear
+    push();
+    ellipse(385, 300, 100);
+    pop();
+
+    //5. Eyebrow
+    push();
+    rect(185, 232, 75, 20);
+    pop();
 };
