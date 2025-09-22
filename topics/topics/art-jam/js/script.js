@@ -47,19 +47,22 @@ function draw() {
     pop();
 
     // Adding the face features
-    //4. Ear
-    push();
-    ellipse(385, 300, 100);
-    pop();
-
-    //5. Eyebrow
+    //4. Eyebrows
     push();
     rect(185, 232, 75, 20);
     pop();
 
-    //6. Eye
+    //5. Eye
     push();
     triangle(220, 310, 220, 350, 280, 310);
     pop();
 
+    //Adding accessories
+    //6. Headphones
+    /*Headphone unit
+        push();
+        ellipse(385, 300, 100);
+        pop();
+    /*Headband*/
+    push
 };
