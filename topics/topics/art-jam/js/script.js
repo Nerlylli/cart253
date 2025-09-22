@@ -20,7 +20,7 @@ function setup() {
 */
 function draw() {
     // Pink pastel background
-    background('white');
+    background('blue');
 
     // Making a head
     //1. Circle
@@ -84,6 +84,54 @@ function draw() {
     strokeWeight(5);
     ellipse(385, 300, 150);
     pop();
-};
 
+    /*8. Unicorn horn
+    push();
+    triangle(150, 25, 245, 200, 300, 200);
+    pop();
+
+    /*5. Eye
+    push();
+    triangle(220, 310, 220, 350, 280, 310);
+    pop();
+    */
+
+    //8. Unicorn horn
+    // First base
+    push();
+    beginShape(TRIANGLE_STRIP);
+    rotate(100);
+    vertex(130, 230);
+    vertex(140, 185);
+    vertex(150, 230);
+    vertex(160, 185);
+    vertex(170, 230);
+    vertex(180, 185);
+    vertex(190, 230);
+    endShape();
+    pop();
+
+    //Second base
+    push();
+    beginShape(TRIANGLE_STRIP);
+    rotate(100);
+    vertex(140, 185);
+    vertex(145, 140);
+    vertex(160, 185);
+    vertex(170, 140);
+    vertex(180, 185);
+    vertex(180, 185);
+    endShape();
+    pop();
+
+    push();
+    beginShape(TRIANGLE_STRIP);
+    rotate(100);
+    vertex(145, 140);
+    vertex(157.5, 95);
+    vertex(170, 140);
+    endShape();
+    pop();
+
+};
 
