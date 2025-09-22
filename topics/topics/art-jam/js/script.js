@@ -139,7 +139,6 @@ function draw() {
     endShape();
     pop();
 
-    //11, 0, 16, 14 transparent color fill
-
 };
 
+//11, 0, 16, 14 transparent color fill
