@@ -59,10 +59,20 @@ function draw() {
 
     //Adding accessories
     //6. Headphones
-    /*Headphone unit
-        push();
-        ellipse(385, 300, 100);
-        pop();
+
     /*Headband*/
-    push
+    push();
+    fill(31, 32, 33);
+    stroke("black");
+    rect(360, 40, 50, 189);
+    pop();
+
+    /*Headphone unit*/
+    push();
+    fill(31, 32, 33);
+    stroke("black")
+    ellipse(385, 300, 150);
+    pop();
+
+
 };
