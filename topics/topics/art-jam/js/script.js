@@ -85,28 +85,26 @@ function draw() {
     ellipse(385, 300, 150);
     pop();
 
-    /*8. Unicorn horn
-    push();
-    triangle(150, 25, 245, 200, 300, 200);
-    pop();
-
-    /*5. Eye
-    push();
-    triangle(220, 310, 220, 350, 280, 310);
-    pop();
-    */
-
     //8. Unicorn horn
-    // First base
+    // First base (from bottom to top)
     push();
     beginShape(TRIANGLE_STRIP);
     rotate(100);
+    /*purple*/fill(202, 147, 202);
     vertex(130, 230);
     vertex(140, 185);
     vertex(150, 230);
+
+    /*white*/fill(255, 255, 255);
     vertex(160, 185);
+
+    /*purple*/fill(202, 147, 202);
     vertex(170, 230);
+
+    /*white*/fill(255, 255, 255);
     vertex(180, 185);
+
+    /*purple*/fill(202, 147, 202);
     vertex(190, 230);
     endShape();
     pop();
@@ -115,23 +113,33 @@ function draw() {
     push();
     beginShape(TRIANGLE_STRIP);
     rotate(100);
+
+    /*blue*/fill(71, 169, 250);
     vertex(140, 185);
     vertex(145, 140);
     vertex(160, 185);
+
+    /*white*/fill(255, 255, 255);
     vertex(170, 140);
+
+    /*blue*/fill(71, 169, 250);
     vertex(180, 185);
     vertex(180, 185);
     endShape();
     pop();
 
+    //Third base
     push();
     beginShape(TRIANGLE_STRIP);
     rotate(100);
+    /*pink*/fill(248, 139, 194);
     vertex(145, 140);
     vertex(157.5, 95);
     vertex(170, 140);
     endShape();
     pop();
+
+    //11, 0, 16, 14 transparent color fill
 
 };
 
