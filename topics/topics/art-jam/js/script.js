@@ -67,8 +67,12 @@ function draw() {
     ellipse(224, 329, 10, 35);
     pop();
 
+    /*7. Lips... to figure out
+    push();
+    pop();*/
+
     //Adding accessories
-    //7. Headphones
+    //8. Headphones
 
     /*Headband*/
     push();
@@ -85,7 +89,7 @@ function draw() {
     ellipse(385, 300, 150);
     pop();
 
-    //8. Unicorn horn
+    //9. Unicorn horn
     // First base (from bottom to top)
     push();
     beginShape(TRIANGLE_STRIP);
@@ -137,6 +141,13 @@ function draw() {
     vertex(157.5, 105);
     vertex(170, 150);
     endShape();
+    pop();
+
+    //10. Body
+    push();
+    fill(0);
+    noStroke();
+    ellipse(400, 700, 350, 275)
     pop();
 
 };
