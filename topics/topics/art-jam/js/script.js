@@ -72,10 +72,23 @@ function draw() {
     pop();*/
 
     //8. Hair
+    /*Strands*/
+    push();
+    fill(187, 38, 78)
+    noStroke();
+    rect(360, 220, 210, 450);
+    pop();
+    /*Bang?...*/
+    push();
+    fill(187, 38, 78)
+    noStroke();
+    arc(370, 223, 400, 345, 154, 0);
+    pop();
+
+
 
     //Adding accessories
     //9. Headphones
-
     /*Headband*/
     push();
     fill(255, 207, 248);
