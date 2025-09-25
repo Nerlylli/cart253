@@ -84,6 +84,69 @@ function draw() {
     noStroke();
     arc(370, 223, 400, 345, 154, 0);
     pop();
+    /*Pieces of hair*/
+    // Style the lines.
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(370, 200, 370, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(390, 200, 390, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(410, 200, 410, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(430, 200, 430, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(450, 200, 450, 600);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(470, 200, 470, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(490, 200, 490, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(510, 200, 510, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(530, 200, 530, 650);
+    pop();
+
+    push();
+    stroke(165, 32, 109);
+    strokeWeight(5);
+    line(550, 200, 550, 650);
+    pop();
+
+
 
 
 
