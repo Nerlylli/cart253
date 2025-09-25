@@ -91,21 +91,21 @@ function draw() {
     beginShape(TRIANGLE_STRIP);
     rotate(100);
     /*purple*/fill(202, 147, 202);
-    vertex(130, 230);
-    vertex(140, 185);
-    vertex(150, 230);
+    vertex(130, 240);
+    vertex(140, 195);
+    vertex(150, 240);
 
     /*white*/fill(255, 255, 255);
-    vertex(160, 185);
+    vertex(160, 195);
 
     /*purple*/fill(202, 147, 202);
-    vertex(170, 230);
+    vertex(170, 240);
 
     /*white*/fill(255, 255, 255);
-    vertex(180, 185);
+    vertex(180, 195);
 
     /*purple*/fill(202, 147, 202);
-    vertex(190, 230);
+    vertex(190, 240);
     endShape();
     pop();
 
@@ -115,16 +115,16 @@ function draw() {
     rotate(100);
 
     /*blue*/fill(71, 169, 250);
-    vertex(140, 185);
-    vertex(145, 140);
-    vertex(160, 185);
+    vertex(140, 195);
+    vertex(145, 150);
+    vertex(160, 195);
 
     /*white*/fill(255, 255, 255);
-    vertex(170, 140);
+    vertex(170, 150);
 
     /*blue*/fill(71, 169, 250);
-    vertex(180, 185);
-    vertex(180, 185);
+    vertex(180, 195);
+    vertex(180, 195);
     endShape();
     pop();
 
@@ -133,9 +133,9 @@ function draw() {
     beginShape(TRIANGLE_STRIP);
     rotate(100);
     /*pink*/fill(248, 139, 194);
-    vertex(145, 140);
-    vertex(157.5, 95);
-    vertex(170, 140);
+    vertex(145, 150);
+    vertex(157.5, 105);
+    vertex(170, 150);
     endShape();
     pop();
 
