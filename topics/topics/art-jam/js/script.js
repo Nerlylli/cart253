@@ -232,7 +232,7 @@ function draw() {
     beginShape(TRIANGLE_STRIP);
     rotate(100);
     /*pink*/fill(300, 139, 194);
-    vertex(145, 150);
+    vertex(144.5, 150);
     vertex(157.5, 105);
     vertex(170, 150);
     endShape();
@@ -328,14 +328,17 @@ function draw() {
     rect(155 + random(5, 0), 500, 55, 10);
     pop();
 
+
     fill(255, 0, 0);
     for (let p of points) {
         fill(255, 255);
         noStroke();
         circle(p.x, p.y, dragRadius * 2);
     }
-
 }
+
+printStarPattern(5); // Prints a left-aligned triangular star pattern
+
 
 function mouseDragged() {
     // Set the color based on the mouse position
