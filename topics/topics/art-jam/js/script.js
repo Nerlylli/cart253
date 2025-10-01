@@ -14,7 +14,6 @@ function setup() {
     createCanvas(700, 700);
 }
 
-
 /**
  * Drawing a human-shaped star
 */
@@ -58,6 +57,7 @@ function draw() {
 
     //Eye
     push();
+    strokeWeight(4);
     triangle(220, 310, 220, 350, 280, 310);
     pop();
 
@@ -315,12 +315,9 @@ function draw() {
     rect(155 + random(2, 0), 500, 55, 10);
     pop();
 
-
     //Conditionals & MouseX, MouseY; to put the headphones on - so the music notes moves
-
-    //Variables; for the music notes to move
-    /*make musicnote1 move*/
+    // Style the square.
 
 }
 
-//11, 0, 16, 14 transparent color fill
+
