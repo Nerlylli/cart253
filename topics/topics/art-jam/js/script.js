@@ -85,40 +85,6 @@ function draw() {
     arc(370, 223, 400, 345, 154, 0);
     pop();
 
-    // Set the coordinates for the curve's anchor and control points.
-    let x1 = 5;
-    let y1 = 26;
-    let x2 = 73;
-    let y2 = 24;
-    let x3 = 73;
-    let y3 = 61;
-    let x4 = 15;
-    let y4 = 65;
-
-    // Draw the curve.
-    noFill();
-    curve(x1, y1, x2, y2, x3, y3, x4, y4);
-
-    // Draw circles along the curve's path.
-    fill(255);
-
-    // Top.
-    let x = curvePoint(x1, x2, x3, x4, 0);
-    let y = curvePoint(y1, y2, y3, y4, 0);
-    circle(x, y, 5);
-
-    // Center.
-    x = curvePoint(x1, x2, x3, x4, 0.5);
-    y = curvePoint(y1, y2, y3, y4, 0.5);
-    circle(x, y, 5);
-
-    // Bottom.
-    x = curvePoint(x1, x2, x3, x4, 1);
-    y = curvePoint(y1, y2, y3, y4, 1);
-    circle(x, y, 5);
-
-    describe('A black curve on a gray square. The endpoints and center of the curve are marked with white circles.');
-
     /*Pieces of hair*/
     // Style the lines in the strands of hair
     push();
