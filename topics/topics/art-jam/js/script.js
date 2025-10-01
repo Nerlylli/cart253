@@ -328,7 +328,6 @@ function draw() {
     rect(155 + random(5, 0), 500, 55, 10);
     pop();
 
-
     fill(255, 0, 0);
     for (let p of points) {
         fill(255, 255);
@@ -336,8 +335,6 @@ function draw() {
         circle(p.x, p.y, dragRadius * 2);
     }
 }
-
-printStarPattern(5); // Prints a left-aligned triangular star pattern
 
 
 function mouseDragged() {
