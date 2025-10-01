@@ -85,7 +85,7 @@ function draw() {
     noStroke();
     rect(360, 220, 210, 450);
     pop();
-    /*Bang?...*/
+    /*Bangs*/
     push();
     fill(187, 38, 78)
     noStroke();
@@ -229,44 +229,44 @@ function draw() {
     push();
     fill('#000');
     noStroke();
-    ellipse(595, 200, 35, 15);
+    ellipse(595 + random(2, 0), 200, 35 + random(2, 0), 15 + random(2, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    ellipse(645, 200, 35, 15);
+    ellipse(645 + random(2, 0), 200, 35 + random(2, 0), 15 + random(2, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(600, 150, 10, 55);
+    rect(600 + random(2, 0), 150, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(650, 150, 10, 55);
+    rect(650 + random(2, 0), 150, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(600, 150, 55, 10);
+    rect(600 + random(2, 0), 150, 55, 10);
     pop();
 
     //Music note #2
     push();
     fill('#000');
     noStroke();
-    rect(120, 70, 10, 55);
+    rect(120 + random(2, 0), 70, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    ellipse(120, 121, 23, 15);
+    ellipse(120, 121, 23 + random(2, 0), 15 + random(2, 0));
     pop();
 
     //Music note #3
@@ -274,46 +274,52 @@ function draw() {
     rotate(50);
     fill('#000');
     noStroke();
-    rect(425, 602, 10, 55);
+    rect(425 + random(2, 0), 602, 10, 55);
     pop();
 
     push();
     rotate(50);
     fill('#000');
     noStroke();
-    ellipse(425, 654, 23, 15);
+    ellipse(425, 654, 23 + random(2, 0), 15 + random(2, 0));
     pop();
 
     //Music notes #4
     push();
     fill('#000');
     noStroke();
-    ellipse(150, 550, 35, 15);
+    ellipse(150, 550, 35 + random(2, 0), 15 + random(2, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    ellipse(200, 550, 35, 15);
+    ellipse(200, 550, 35 + random(2, 0), 15 + random(2, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(155, 500, 10, 55);
+    rect(155 + random(2, 0), 500, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(205, 500, 10, 55);
+    rect(205 + random(2, 0), 500, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(155, 500, 55, 10);
+    rect(155 + random(2, 0), 500, 55, 10);
     pop();
+
+
+    //Conditionals & MouseX, MouseY; to put the headphones on - so the music notes moves
+
+    //Variables; for the music notes to move
+    /*make musicnote1 move*/
 
 }
 
