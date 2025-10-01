@@ -7,25 +7,27 @@
 
 "use strict";
 
+const points = []
+let dragPoint = null;
+
+const numPoints = 9;
+const dragRadius = 20;
+
 /**
  * Create Canvas
 */
 function setup() {
     createCanvas(700, 700);
 
+    for (let i = 0; i < numPoints; i++) {
+        points.push(createVector(random(width), random(height)));
+    }
+
     // Set width of the lines
     strokeWeight(5);
 
     // Set color mode to hue-saturation-brightness (HSB)
     colorMode(HSB);
-}
-
-function mouseDragged() {
-    // Set the color based on the mouse position
-    // from the previous position to the current position
-    let unicorn = mouseX + mouseY;
-    stroke(unicorn, 90, 90);
-    line(pmouseX, pmouseY, mouseX, mouseY);
 }
 
 /**
@@ -64,19 +66,23 @@ function draw() {
     // Adding the face features
     //Eye
     push();
-    strokeWeight(4);
+    noStroke();
     triangle(220, 310, 220, 350, 280, 310);
+    pop();
+
+    //Eyebrow
+    push();
+    fill(165, 32, 109);
+    noStroke();
+    rect(185, 232, 75, 20);
     pop();
 
     //Pupil
     push();
-    fill(66, 34, 1);
+    noStroke();
+    fill(30, 440, 60);
     ellipse(224, 329, 10, 35);
     pop();
-
-    /*7. Lips... to figure out
-    push();
-    pop();*/
 
     //Body
     push();
@@ -322,6 +328,45 @@ function draw() {
     rect(155 + random(5, 0), 500, 55, 10);
     pop();
 
+    fill(255, 0, 0);
+    for (let p of points) {
+        fill(255, 255);
+        noStroke();
+        circle(p.x, p.y, dragRadius * 2);
+    }
+
 }
 
+function mouseDragged() {
+    // Set the color based on the mouse position
+    // from the previous position to the current position
+    let unicorn = mouseX + mouseY;
+    stroke(unicorn, 90, 90);
+    line(pmouseX, pmouseY, mouseX, mouseY);
 
+    if (dragPoint) {
+        dragPoint.x = mouseX;
+        dragPoint.y = mouseY;
+    }
+}
+
+function mousePressed() {
+    for (let i = points.length - 1; i >= 0; i--) {
+        if (mouseInCircle(points[i], dragRadius)) {
+            dragPoint = points.splice(i, 1);
+            dragPoint.x = mouseX;
+            dragPoint.y = mouseY;
+            //bring the drag point to the front
+            points.push(dragPoint);
+        }
+
+    }
+}
+
+function mouseReleased() {
+    dragPoint = null;
+}
+
+function mouseInCircle(pos, radius) {
+    return dist(mouseX, mouseY, pos.x, pos.y) < radius
+}
