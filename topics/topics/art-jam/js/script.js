@@ -12,13 +12,27 @@
 */
 function setup() {
     createCanvas(700, 700);
+
+    // Set width of the lines
+    strokeWeight(5);
+
+    // Set color mode to hue-saturation-brightness (HSB)
+    colorMode(HSB);
+}
+
+function mouseDragged() {
+    // Set the color based on the mouse position
+    // from the previous position to the current position
+    let unicorn = mouseX + mouseY;
+    stroke(unicorn, 90, 90);
+    line(pmouseX, pmouseY, mouseX, mouseY);
 }
 
 /**
  * Drawing a human-shaped star
 */
 function draw() {
-    // Pink pastel background
+    // Blue background
     background('blue');
 
     // Making a head
@@ -48,13 +62,6 @@ function draw() {
     pop();
 
     // Adding the face features
-    //Eyebrows
-    push();
-    fill(28, 17, 6);
-    noStroke();
-    rect(185, 232, 75, 20);
-    pop();
-
     //Eye
     push();
     strokeWeight(4);
@@ -158,15 +165,15 @@ function draw() {
     //Headphones
     /*Headband*/
     push();
-    fill(255, 207, 248);
+    fill(255, 207, 75);
     noStroke();
     rect(360, 40, 50, 189);
     pop();
 
     /*Headphone unit*/
     push();
-    fill(255, 207, 248);
-    stroke(252, 167, 240);
+    fill(255, 300, 75);
+    stroke(252, 167, 80);
     strokeWeight(5);
     ellipse(385, 300, 150);
     pop();
@@ -176,21 +183,21 @@ function draw() {
     push();
     beginShape(TRIANGLE_STRIP);
     rotate(100);
-    /*purple*/fill(202, 147, 202);
+    /*purple*/fill(270, 147, 202);
     vertex(130, 240);
     vertex(140, 195);
     vertex(150, 240);
 
-    /*white*/fill(255, 255, 255);
+    /*white*/fill(255, 255);
     vertex(160, 195);
 
-    /*purple*/fill(202, 147, 202);
+    /*purple*/fill(270, 147, 202);
     vertex(170, 240);
 
-    /*white*/fill(255, 255, 255);
+    /*white*/fill(255, 255);
     vertex(180, 195);
 
-    /*purple*/fill(202, 147, 202);
+    /*purple*/fill(270, 147, 202);
     vertex(190, 240);
     endShape();
     pop();
@@ -200,15 +207,15 @@ function draw() {
     beginShape(TRIANGLE_STRIP);
     rotate(100);
 
-    /*blue*/fill(71, 169, 250);
+    /*blue*/fill(180, 100, 100);
     vertex(140, 195);
     vertex(145, 150);
     vertex(160, 195);
 
-    /*white*/fill(255, 255, 255);
+    /*white*/fill(255, 255);
     vertex(170, 150);
 
-    /*blue*/fill(71, 169, 250);
+    /*blue*/fill(180, 100, 100);
     vertex(180, 195);
     vertex(180, 195);
     endShape();
@@ -218,7 +225,7 @@ function draw() {
     push();
     beginShape(TRIANGLE_STRIP);
     rotate(100);
-    /*pink*/fill(248, 139, 194);
+    /*pink*/fill(300, 139, 194);
     vertex(145, 150);
     vertex(157.5, 105);
     vertex(170, 150);
@@ -229,44 +236,44 @@ function draw() {
     push();
     fill('#000');
     noStroke();
-    ellipse(595 + random(2, 0), 200, 35 + random(2, 0), 15 + random(2, 0));
+    ellipse(595 + random(5, 0), 200, 35 + random(5, 0), 15 + random(5, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    ellipse(645 + random(2, 0), 200, 35 + random(2, 0), 15 + random(2, 0));
+    ellipse(645 + random(5, 0), 200, 35 + random(5, 0), 15 + random(5, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(600 + random(2, 0), 150, 10, 55);
+    rect(600 + random(5, 0), 150, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(650 + random(2, 0), 150, 10, 55);
+    rect(650 + random(5, 0), 150, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(600 + random(2, 0), 150, 55, 10);
+    rect(600 + random(5, 0), 150, 55, 10);
     pop();
 
     //Music note #2
     push();
     fill('#000');
     noStroke();
-    rect(120 + random(2, 0), 70, 10, 55);
+    rect(120 + random(5, 0), 70, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    ellipse(120, 121, 23 + random(2, 0), 15 + random(2, 0));
+    ellipse(120, 121, 23 + random(5, 0), 15 + random(5, 0));
     pop();
 
     //Music note #3
@@ -274,49 +281,46 @@ function draw() {
     rotate(50);
     fill('#000');
     noStroke();
-    rect(425 + random(2, 0), 602, 10, 55);
+    rect(425 + random(5, 0), 602, 10, 55);
     pop();
 
     push();
     rotate(50);
     fill('#000');
     noStroke();
-    ellipse(425, 654, 23 + random(2, 0), 15 + random(2, 0));
+    ellipse(425, 654, 23 + random(5, 0), 15 + random(5, 0));
     pop();
 
     //Music notes #4
     push();
     fill('#000');
     noStroke();
-    ellipse(150, 550, 35 + random(2, 0), 15 + random(2, 0));
+    ellipse(150, 550, 35 + random(5, 0), 15 + random(5, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    ellipse(200, 550, 35 + random(2, 0), 15 + random(2, 0));
+    ellipse(200, 550, 35 + random(5, 0), 15 + random(5, 0));
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(155 + random(2, 0), 500, 10, 55);
+    rect(155 + random(5, 0), 500, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(205 + random(2, 0), 500, 10, 55);
+    rect(205 + random(5, 0), 500, 10, 55);
     pop();
 
     push();
     fill('#000');
     noStroke();
-    rect(155 + random(2, 0), 500, 55, 10);
+    rect(155 + random(5, 0), 500, 55, 10);
     pop();
-
-    //Conditionals & MouseX, MouseY; to put the headphones on - so the music notes moves
-    // Style the square.
 
 }
 
