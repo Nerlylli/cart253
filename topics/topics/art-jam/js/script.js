@@ -71,6 +71,13 @@ function draw() {
     push();
     pop();*/
 
+    //11. Body
+    push();
+    fill(0);
+    noStroke();
+    ellipse(400, 700, 350, 275)
+    pop();
+
     //8. Hair
     /*Strands*/
     push();
@@ -114,7 +121,7 @@ function draw() {
     push();
     stroke(165, 32, 109);
     strokeWeight(5);
-    line(450, 200, 450, 600);
+    line(450, 200, 450, 650);
     pop();
 
     push();
@@ -218,12 +225,7 @@ function draw() {
     endShape();
     pop();
 
-    //11. Body
-    push();
-    fill(0);
-    noStroke();
-    ellipse(400, 700, 350, 275)
-    pop();
+
 }
 
 //11, 0, 16, 14 transparent color fill
