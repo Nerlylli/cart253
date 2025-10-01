@@ -23,14 +23,14 @@ function draw() {
     background('blue');
 
     // Making a head
-    //1. Circle
+    //Circle
     push();
     noStroke();
     fill(120, 67, 10);
     ellipse(370, 250, 400);
     pop();
 
-    //2. Jaw
+    //Jaw
     push();
     //Rotate the jaw
     rotate(75);
@@ -39,7 +39,7 @@ function draw() {
     rect(15, 387, 200, 150);
     pop();
 
-    //3. Neck
+    //Neck
     push();
     //Rotate the neck
     rotate(50);
@@ -49,19 +49,19 @@ function draw() {
     pop();
 
     // Adding the face features
-    //4. Eyebrows
+    //Eyebrows
     push();
     fill(28, 17, 6);
     noStroke();
     rect(185, 232, 75, 20);
     pop();
 
-    //5. Eye
+    //Eye
     push();
     triangle(220, 310, 220, 350, 280, 310);
     pop();
 
-    //6. Pupil
+    //Pupil
     push();
     fill(66, 34, 1);
     ellipse(224, 329, 10, 35);
@@ -71,7 +71,7 @@ function draw() {
     push();
     pop();*/
 
-    //11. Body
+    //Body
     push();
     fill(0);
     noStroke();
@@ -155,7 +155,7 @@ function draw() {
     pop();
 
     //Adding accessories
-    //9. Headphones
+    //Headphones
     /*Headband*/
     push();
     fill(255, 207, 248);
@@ -171,7 +171,7 @@ function draw() {
     ellipse(385, 300, 150);
     pop();
 
-    //10. Unicorn horn
+    //Unicorn horn
     // First base (from bottom to top)
     push();
     beginShape(TRIANGLE_STRIP);
@@ -225,6 +225,95 @@ function draw() {
     endShape();
     pop();
 
+    //Music note #1
+    push();
+    fill('#000');
+    noStroke();
+    ellipse(595, 200, 35, 15);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    ellipse(645, 200, 35, 15);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    rect(600, 150, 10, 55);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    rect(650, 150, 10, 55);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    rect(600, 150, 55, 10);
+    pop();
+
+    //Music note #2
+    push();
+    fill('#000');
+    noStroke();
+    rect(120, 70, 10, 55);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    ellipse(120, 121, 23, 15);
+    pop();
+
+    //Music note #3
+    push();
+    rotate(50);
+    fill('#000');
+    noStroke();
+    rect(425, 602, 10, 55);
+    pop();
+
+    push();
+    rotate(50);
+    fill('#000');
+    noStroke();
+    ellipse(425, 654, 23, 15);
+    pop();
+
+    //Music notes #4
+    push();
+    fill('#000');
+    noStroke();
+    ellipse(150, 550, 35, 15);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    ellipse(200, 550, 35, 15);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    rect(155, 500, 10, 55);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    rect(205, 500, 10, 55);
+    pop();
+
+    push();
+    fill('#000');
+    noStroke();
+    rect(155, 500, 55, 10);
+    pop();
 
 }
 
