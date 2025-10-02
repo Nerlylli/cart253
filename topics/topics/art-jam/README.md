@@ -2,31 +2,28 @@
 
 NERLY CADET
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online](https://nerlylli.github.io/cart253/topics/topics/art-jam/)
 
 ## Description
 
 This description should help the reader understand what the program is, anything they should know to be able to experience it (controls, special features, etc.), and what the desired user experience is. For example:
 
-> *The Mayor of Clown Town* is a simulator experience that allows the user to control a small town populated entirely by clowns.
+> The project is an abstract portrait of me and the vibe I wish to curate for myself. It is inspired by vocaloid artists' art aesthetic. That is why the character is wearing headphone and is surrounded by music notes. There is also a unicorn, because I believe in unicorns and I believe that being a unicorn is about energy rather than the actual phyiscal. 
 
-> The experience is controlled via the mouse, with left click selecting a clown and bringing up a menu of options such as "slip of banana peel" or "get into impossible capacious clown-car."
-
-> The project is meant to give the user a sense of what it would be the mayor of a town of clowns, eventually getting the sense that clowns are not taking their civic duties seriously.
+> The project is interactive. By moving the white circles around, the unicorn horn project lights that changes colors. The music notes, although lacking user interactions, move around. 
 
 ## Screenshot(s)
 
 This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a clown face](./assets/images/clown.png)
+> ![Image of a the vocaloid version of me](./assets/vocaloid.nerly.png)
 
 ## Attribution
 
 This bit should attribute any code, assets or other elements used taken from other sources. For example:
 
 > - This project uses [p5.js](https://p5js.org).
-> - The clown image is a capture of the clown from the Apple emoji character set.
-> - The barking sound effect is "single dog bark 1" by crazymonke9 from freesound.org: https://freesound.org/people/crazymonke9/sounds/418107/
+> - The image is a coded drawing of the a vocaloid caricature of myself.
 
 ## License
 
