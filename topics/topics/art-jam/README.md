@@ -16,7 +16,7 @@ This description should help the reader understand what the program is, anything
 
 This bit should have some images of the program running so that the reader has a sense of what it looks like. For example:
 
-> ![Image of a the vocaloid version of me](./assets/vocaloid.nerly.png)
+> ![Image of a the vocaloid version of me](./assets/images/vocaloid.nerly.png)
 
 ## Attribution
 
