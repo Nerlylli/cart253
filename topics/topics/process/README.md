@@ -1,8 +1,8 @@
-# TITLE OF PROJECT
+# Mod Jam
 
-AUTHOR NAME
+Nerly Cadet
 
-[View this project online](URL_FOR_THE_RUNNING_PROJECT)
+[View this project online](https://nerlylli.github.io/cart253/topics/topics/process/)
 
 ## Description
 
