@@ -8,21 +8,9 @@
 
 "use strict";
 
-//balls 
-let ball1 = undefined
-let ball2 = undefined
-
-// Our ball
-const ball = {
-    x: 300,
-    y: 20,
-    width: 10,
-    height: 10,
-    velocity: {
-        x: 0,
-        y: 5
-    }
-};
+//Balls
+let ball1 = undefined;
+let ball2 = undefined;
 
 // Our paddle
 const paddle = {
@@ -37,9 +25,27 @@ const paddle = {
 */
 function setup() {
     createCanvas(600, 300);
+
+    //Create the balls
+    ball1 = createBall();
+    ball2 = createBall();
+
 }
 
-
+/**
+ * The values of the balls
+ */
+function createBall() {
+    let ball = {
+        x: random(50, width - 50),
+        y: 20,
+        velocity: {
+            x: 0,
+            y: random(2, 10),
+        }
+    };
+    return ball;
+}
 
 /**
  * Move and display the ball and paddle
@@ -47,13 +53,24 @@ function setup() {
 function draw() {
     background("#87ceeb");
 
+    //Move balls
+    moveBall(ball1);
+    moveBall(ball2);
+
+    //Move paddle
     movePaddle(paddle);
-    moveBall(ball);
 
-    handleBounce(ball, paddle);
+    //Check for bounces
+    handleBounce(ball1, paddle);
+    handleBounce(ball2, paddle);
 
+    //Display balls
+    drawBall(ball1);
+    drawBall(ball2);
+
+    //Display paddle
     drawPaddle(paddle);
-    drawBall(ball);
+
 }
 
 /**
