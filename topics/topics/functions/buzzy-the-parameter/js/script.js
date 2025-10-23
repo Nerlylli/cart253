@@ -15,6 +15,14 @@ let buzzyTheFly = {
     buzziness: 4
 };
 
+//Second fly that will buzz around
+let JazzyTheFly = {
+    x: 300,
+    y: 350,
+    size: 10,
+    buzziness: 10
+};
+
 /**
  * Create a canvas
  */
@@ -29,13 +37,26 @@ function draw() {
     background("#87ceeb");
 
     // Move buzzy
-    buzzyTheFly.x += random(-buzzyTheFly.buzziness, buzzyTheFly.buzziness);
-    buzzyTheFly.y += random(-buzzyTheFly.buzziness, buzzyTheFly.buzziness);
+    moveFly(buzzyTheFly);
+    moveFly(JazzyTheFly);
+
+
 
     // Draw buzzy
+    drawFly(buzzyTheFly);
+    drawFly(JazzyTheFly);
+
+}
+
+function moveFly(fly) {
+    fly.x += random(-fly.buzziness, fly.buzziness);
+    fly.y += random(-fly.buzziness, fly.buzziness);
+}
+
+function drawFly(fly) {
     push();
     noStroke();
     fill(0);
-    ellipse(buzzyTheFly.x, buzzyTheFly.y, buzzyTheFly.size);
+    ellipse(fly.x, fly.y, fly.size);
     pop();
 }
