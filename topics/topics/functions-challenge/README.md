@@ -1,6 +1,6 @@
-# TITLE OF PROJECT
+# Bouncy Ball Ball Bonanza
 
-AUTHOR NAME
+Nerly Cadet, Ya Xuan Pang, Ashmitha Kanagiah
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
