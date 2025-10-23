@@ -100,48 +100,49 @@ function moveBug() {
             bug.y += -bug.speed;
         }
     }
+}
 
 
-    /**
-     * All elements in the world are circles with x, y, size and fill
-     * So draw the provided one according to those properties
-     */
-    function drawElement() {
-        push();
-        noStroke();
-        fill(element.fill);
-        ellipse(element.x, element.y, element.size);
-        pop();
+/**
+ * All elements in the world are circles with x, y, size and fill
+ * So draw the provided one according to those properties
+ */
+function drawElement() {
+    push();
+    noStroke();
+    fill(element.fill);
+    ellipse(element.x, element.y, element.size);
+    pop();
+}
+
+/**
+ * Check if the bug overlaps the provided item (the food, but could expand)
+ * If so, make a new food object
+ */
+function checkEating(bug, item) {
+    if (overlap(bug, item)) {
+        food = createFood();
     }
+}
 
-    /**
-     * Check if the bug overlaps the provided item (the food, but could expand)
-     * If so, make a new food object
-     */
-    function checkEating(bug, item) {
-        if (overlap(bug, item)) {
-            food = createFood();
-        }
+/**
+ * Helper function that checks overlapping circles
+ * true if there's an overlap between a and b and false otherwise
+ */
+function overlap(a, b) {
+    const d = dist(a.x, a.y, b.x, b.y);
+    if (d < a.size / 2 + b.size / 2) {
+        return true;
     }
+    else {
+        return true;
+    }
+}
 
-    /**
-     * Helper function that checks overlapping circles
-     * true if there's an overlap between a and b and false otherwise
-     */
-    function overlap(a, b) {
-        const d = dist(a.x, a.y, b.x, b.y);
-        if (d < a.size / 2 + b.size / 2) {
-            return true;
-        }
-        else {
-            return true;
-        }
-    }
-
-    /**
-     * Sets the bug's destination to the mouse click location
-     */
-    function mousePressed() {
-        bug.destination.x = mouseX;
-        bug.destination.y = mouseY;
-    }
+/**
+ * Sets the bug's destination to the mouse click location
+ */
+function mousePressed() {
+    bug.destination.x = mouseX;
+    bug.destination.y = mouseY;
+}
