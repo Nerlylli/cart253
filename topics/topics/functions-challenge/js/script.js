@@ -39,6 +39,7 @@ function createBall() {
     let ball = {
         x: random(50, width - 50),
         y: 20,
+        size: 20,
         velocity: {
             x: 0,
             y: random(2, 10),
@@ -78,8 +79,6 @@ function draw() {
  */
 function movePaddle(paddle) {
     paddle.x = mouseX;
-
-
 }
 
 /**
@@ -103,25 +102,12 @@ function handleBounce(ball, paddle) {
     }
 }
 
-function checkBallOverlap(ball, paddle) {
+function checkOverlap(ball, paddle) {
     let result = (ball.x + ball.size > paddle.x &&
         ball.x < paddle.x + paddle.width &&
         ball.y + ball.size > paddle.y &&
         ball.y < paddle.y + paddle.height);
     return result;
-}
-
-/**
- * Returns true if rectA and rectB overlap, and false otherwise
- * Assumes rectA and rectB have properties x, y, width and height to describe
- * their rectangles, and that rectA and rectB are displayed CENTERED on their
- * x,y coordinates.
- */
-function checkOverlap(rectA, rectB) {
-    return (rectA.x + rectA.width / 2 > rectB.x - rectB.width / 2 &&
-        rectA.x - rectA.width / 2 < rectB.x + rectB.width / 2 &&
-        rectA.y + rectA.height / 2 > rectB.y - rectB.height / 2 &&
-        rectA.y - rectA.height / 2 < rectB.y + rectB.height / 2);
 }
 
 /**
@@ -144,7 +130,7 @@ function drawBall(ball) {
     rectMode(CENTER);
     noStroke();
     fill("pink");
-    rect(ball.x, ball.y, ball.width, ball.height);
+    rect(ball.x, ball.y, ball.size);
     pop();
 }
 
