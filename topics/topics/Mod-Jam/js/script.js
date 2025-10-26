@@ -30,13 +30,13 @@ const unicorn = {
         y: 520,
         size: 150
     },
-    // The unicorn's tongue has a position, size, speed, and state
-    tongue: {
+    // The unicorn's horn has a position, size, speed, and state
+    horn: {
         x: undefined,
         y: 480,
         size: 20,
         speed: 20,
-        // Determines how the tongue moves each frame
+        // Determines how the horn moves each frame
         state: "idle" // State can be: idle, outbound, inbound
     }
 };
@@ -90,50 +90,37 @@ function moveUnicorn() {
 }
 
 /**
- * Handles moving the tongue based on its state
+ * Handles moving the horn based on its state
  */
-function moveTongue() {
-    // Tongue matches the unicorn's x
-    unicorn.tongue.x = unicorn.body.x;
-    // If the tongue is idle, it doesn't do anything
-    if (unicorn.tongue.state === "idle") {
+function moveHorn() {
+    // horn matches the unicorn's x
+    unicorn.horn.x = unicorn.body.x;
+    // If the horn is idle, it doesn't do anything
+    if (unicorn.horn.state === "idle") {
         // Do nothing
     }
-    // If the tongue is outbound, it moves up
-    else if (unicorn.tongue.state === "outbound") {
-        unicorn.tongue.y += -unicorn.tongue.speed;
-        // The tongue bounces back if it hits the top
-        if (unicorn.tongue.y <= 0) {
-            unicorn.tongue.state = "inbound";
+    // If the horn is outbound, it moves up
+    else if (unicorn.horn.state === "outbound") {
+        unicorn.horn.y += -unicorn.horn.speed;
+        // The horn bounces back if it hits the top
+        if (unicorn.horn.y <= 0) {
+            unicorn.horn.state = "inbound";
         }
     }
-    // If the tongue is inbound, it moves down
-    else if (unicorn.tongue.state === "inbound") {
-        unicorn.tongue.y += unicorn.tongue.speed;
-        // The tongue stops if it hits the bottom
-        if (unicorn.tongue.y >= height) {
-            unicorn.tongue.state = "idle";
+    // If the horn is inbound, it moves down
+    else if (unicorn.horn.state === "inbound") {
+        unicorn.horn.y += unicorn.horn.speed;
+        // The horn stops if it hits the bottom
+        if (unicorn.horn.y >= height) {
+            unicorn.horn.state = "idle";
         }
     }
 }
 
 /**
- * Displays the tongue (tip and line connection) and the unicorn (body)
+ * Displays the horn (tip and line connection) and the unicorn (body)
  */
 function drawUnicorn() {
-    // Draw the tongue tip
-    push();
-    fill("#ff0000");
-    noStroke();
-    ellipse(unicorn.tongue.x, unicorn.tongue.y, unicorn.tongue.size);
-    pop();
-
-    // Draw the rest of the tongue
-    push();
-    stroke("#ff0000");
-    strokeWeight(unicorn.tongue.size);
-    line(unicorn.tongue.x, unicorn.tongue.y, unicorn.body.x, unicorn.body.y);
-    pop();
 
     // Draw the unicorn's body
     push();
@@ -141,30 +128,37 @@ function drawUnicorn() {
     noStroke();
     ellipse(unicorn.body.x, unicorn.body.y, unicorn.body.size);
     pop();
+
+    // Draw the rest of the horn
+    push();
+    stroke("#FF00C4");
+    strokeWeight(unicorn.horn.size);
+    line(unicorn.horn.x, unicorn.horn.y, unicorn.body.x, unicorn.body.y);
+    pop();
 }
 
 /**
- * Handles the tongue overlapping the fly
+ * Handles the horn overlapping the fly
  */
-function checkTongueFlyOverlap() {
-    // Get distance from tongue to fly
-    const d = dist(unicorn.tongue.x, unicorn.tongue.y, fly.x, fly.y);
+function checkHornFlyOverlap() {
+    // Get distance from horn to fly
+    const d = dist(unicorn.horn.x, unicorn.horn.y, fly.x, fly.y);
     // Check if it's an overlap
-    const eaten = (d < unicorn.tongue.size / 2 + fly.size / 2);
+    const eaten = (d < unicorn.horn.size / 2 + fly.size / 2);
     if (eaten) {
         // Reset the fly
         resetFly();
-        // Bring back the tongue
-        unicorn.tongue.state = "inbound";
+        // Bring back the horn
+        unicorn.horn.state = "inbound";
     }
 }
 
 /**
- * Launch the tongue on click (if it's not launched yet)
+ * Launch the horn on click (if it's not launched yet)
  */
 function mousePressed() {
-    if (unicorn.tongue.state === "idle") {
-        unicorn.tongue.state = "outbound";
+    if (unicorn.horn.state === "idle") {
+        unicorn.horn.state = "outbound";
     }
 }
 
@@ -350,8 +344,8 @@ function draw() {
     moveFly();
     drawFly();
     moveUnicorn();
-    moveTongue();
+    moveHorn();
     drawUnicorn();
-    checkTongueFlyOverlap();
+    checkHornFlyOverlap();
 
 }
