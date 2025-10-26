@@ -179,26 +179,25 @@ function mousePressed() {
         unicorn.horn.state = "outbound";
     }
 
-    //YES/NO buttons before the game starts
+    /*Buttons before the game starts*/
+    //YES button
     if (believeQuestion) {
         if (mouseX > 200 && mouseX < 300 && mouseY > 260 && mouseY < 310) {
             believeQuestion = false;
             showInstructions = true;
-        } else if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
+        }
+        //NO button
+        else if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
             believeQuestion = false;
             gameStarted = false;
         }
     }
+    //Instructions button
     else if (showInstructions) {
         if (mouseX > 270 && mouseX < 370 && mouseY > 400 && mouseY < 450) {
             showInstructions = false;
             gameStarted = true;
         }
-    }
-    // NO button 
-    if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
-        believeQuestion = false;
-        gameStarted = false;
     }
 }
 
