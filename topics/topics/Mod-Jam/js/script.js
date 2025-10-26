@@ -14,6 +14,8 @@
  */
 "use strict"
 
+let showInstructions = false;
+
 function drawCrown(x, y, size) {
     push();
     translate(x, y);
@@ -24,7 +26,7 @@ function drawCrown(x, y, size) {
     triangle(-20, 0, -13, -20, -7, 0);
     triangle(-7, 0, 0, -20, 7, 0);
     triangle(7, 0, 13, -20, 20, 0);
-    //Dot on the crowns
+    //Dots on the crowns
     fill(255, 0, 150);
     ellipse(-13, -20, 5);
     ellipse(0, -20, 5);
@@ -171,26 +173,32 @@ function checkHornFlyOverlap() {
     }
 }
 
-/**
- * Launch the horn on click (if it's not launched yet)
- */
+
 function mousePressed() {
-    if (unicorn.horn.state === "idle") {
+    if (unicorn.horn.state === "idle" && gameStarted) {
         unicorn.horn.state = "outbound";
     }
 
-    // YES/NO buttons before the game starts
+    //YES/NO buttons before the game starts
     if (believeQuestion) {
-        // YES button
         if (mouseX > 200 && mouseX < 300 && mouseY > 260 && mouseY < 310) {
             believeQuestion = false;
-            gameStarted = true;
-        }
-        // NO button
-        else if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
+            showInstructions = true;
+        } else if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
             believeQuestion = false;
             gameStarted = false;
         }
+    }
+    else if (showInstructions) {
+        if (mouseX > 270 && mouseX < 370 && mouseY > 400 && mouseY < 450) {
+            showInstructions = false;
+            gameStarted = true;
+        }
+    }
+    // NO button 
+    if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
+        believeQuestion = false;
+        gameStarted = false;
     }
 }
 
@@ -231,6 +239,33 @@ function draw() {
         return;
     }
 
+    // Instructions screen
+    if (showInstructions) {
+        textAlign(CENTER, CENTER);
+        textSize(28);
+        fill(229, 202, 255);
+        let glow = abs(sin(frameCount * 0.1)) * 255; stroke(glow); //same glow as "yes"
+        strokeWeight(2);
+        text("Wow! A believer!",
+            width / 2,
+            height / 2 - 50);
+        textSize(20);
+        noStroke();
+        text("Your mission is\n" +
+            "to protect the palace from\n" +
+            "all the flies that are infesting\n" +
+            "the area!",
+            width / 2,
+            height / 1.8);
+        fill("#6aff6a");
+        stroke(0);
+        rect(270, 400, 100, 50, 10);
+        fill(0);
+        textSize(24);
+        text("OK", 320, 425);
+
+        return;
+    }
     //If they said NO — Games crashes
     if (!gameStarted) {
         let pulse = sin(frameCount * 0.1) * 20 + 60;
