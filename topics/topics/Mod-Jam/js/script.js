@@ -18,15 +18,17 @@ function drawCrown(x, y, size) {
     push();
     translate(x, y);
     noStroke();
-    fill(255, 215, 0);
-    rect(-size / 2, 0, size, size / 3); //base of the crown
-    //Triangles represent the spikes of the crown
-    triangle(-size / 2, 0, -size / 3, -size / 2, -size / 6, 0);
-    triangle(-size / 6, 0, 0, -size / 2, size / 6, 0);
-    triangle(size / 6, 0, size / 3, -size / 2, size / 2, 0);
-    //The dot on the crown
+    fill(255, 215, 0); // Gold
+    rect(-20, 0, 40, 13);
+    // Triangles for the top of the crown
+    triangle(-20, 0, -13, -20, -7, 0);
+    triangle(-7, 0, 0, -20, 7, 0);
+    triangle(7, 0, 13, -20, 20, 0);
+    //Dot on the crowns
     fill(255, 0, 150);
-    ellipse(0, -size / 3, size / 8);
+    ellipse(-13, -20, 5);
+    ellipse(0, -20, 5);
+    ellipse(13, -20, 5);
     pop();
 }
 
