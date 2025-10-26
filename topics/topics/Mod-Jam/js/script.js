@@ -13,6 +13,9 @@
  * https://p5js.org/
  */
 
+"use strict"
+let gameStarted = false;
+let believeQuestion = true; // true = show the question screen first
 
 /*Creates the canvas*/
 function setup() {
@@ -24,20 +27,17 @@ function setup() {
 
 // Our Unicorn
 const unicorn = {
-    // The unicorn's body has a position and size
     body: {
         x: 320,
         y: 520,
         size: 150
     },
-    // The unicorn's horn has a position, size, speed, and state
     horn: {
         x: undefined,
         y: 480,
         size: 20,
         speed: 20,
-        // Determines how the horn moves each frame
-        state: "idle" // State can be: idle, outbound, inbound
+        state: "idle"
     }
 };
 
@@ -160,12 +160,72 @@ function mousePressed() {
     if (unicorn.horn.state === "idle") {
         unicorn.horn.state = "outbound";
     }
+
+    // YES/NO buttons before the game starts
+    if (believeQuestion) {
+        // YES button
+        if (mouseX > 200 && mouseX < 300 && mouseY > 260 && mouseY < 310) {
+            believeQuestion = false;
+            gameStarted = true;
+        }
+        // NO button
+        else if (mouseX > 340 && mouseX < 440 && mouseY > 260 && mouseY < 310) {
+            believeQuestion = false;
+            gameStarted = false;
+        }
+    }
 }
 
 /*Draws the scenery*/
 function draw() {
     background(47, 203, 255);
 
+    //Start screen 
+    if (believeQuestion) {
+        textAlign(CENTER, CENTER);
+        textSize(32);
+        fill(255);
+        text("Do you believe in unicorns?", width / 2, height / 2 - 40);
+
+        // YES button 
+        fill("#6aff6a");
+        rect(200, 260, 100, 50, 10);
+        let glow = abs(sin(frameCount * 0.1)) * 255; // glow effect 
+
+        push();
+        textAlign(CENTER, CENTER);
+        textSize(24);
+        stroke(255, 255, 255, glow); // white glowing outline
+        strokeWeight(5);
+        fill(0);
+        text("YES", 250, 285);
+        pop();
+
+        // NO button
+        push();
+        fill(255, 179, 186);
+        rect(340, 260, 100, 50, 10);
+        fill(0);
+        textSize(24);
+        text("NO", 390, 285);
+        pop();
+
+        return;
+    }
+
+    //If they said NO — Games crashes
+    if (!gameStarted) {
+        let pulse = sin(frameCount * 0.1) * 20 + 60;
+        textSize(30);
+        textAlign(CENTER, CENTER);
+        fill(random(200, 255), random(0, 100), random(0, 255));
+        background(random(40, 60), random(180, 220), random(255));
+
+        for (let i = 0; i < 40; i++) {
+            text("Shun the non-believers!", random(width), random(height));
+        }
+        return;
+    }
 
     /**
     *Mountain in the back
