@@ -22,15 +22,15 @@ function setup() {
     resetFly();
 }
 
-// Our frog
-const frog = {
-    // The frog's body has a position and size
+// Our Unicorn
+const unicorn = {
+    // The unicorn's body has a position and size
     body: {
         x: 320,
         y: 520,
         size: 150
     },
-    // The frog's tongue has a position, size, speed, and state
+    // The unicorn's tongue has a position, size, speed, and state
     tongue: {
         x: undefined,
         y: 480,
@@ -83,63 +83,63 @@ function resetFly() {
 }
 
 /**
- * Moves the frog to the mouse position on x
+ * Moves the unicorn to the mouse position on x
  */
-function moveFrog() {
-    frog.body.x = mouseX;
+function moveUnicorn() {
+    unicorn.body.x = mouseX;
 }
 
 /**
  * Handles moving the tongue based on its state
  */
 function moveTongue() {
-    // Tongue matches the frog's x
-    frog.tongue.x = frog.body.x;
+    // Tongue matches the unicorn's x
+    unicorn.tongue.x = unicorn.body.x;
     // If the tongue is idle, it doesn't do anything
-    if (frog.tongue.state === "idle") {
+    if (unicorn.tongue.state === "idle") {
         // Do nothing
     }
     // If the tongue is outbound, it moves up
-    else if (frog.tongue.state === "outbound") {
-        frog.tongue.y += -frog.tongue.speed;
+    else if (unicorn.tongue.state === "outbound") {
+        unicorn.tongue.y += -unicorn.tongue.speed;
         // The tongue bounces back if it hits the top
-        if (frog.tongue.y <= 0) {
-            frog.tongue.state = "inbound";
+        if (unicorn.tongue.y <= 0) {
+            unicorn.tongue.state = "inbound";
         }
     }
     // If the tongue is inbound, it moves down
-    else if (frog.tongue.state === "inbound") {
-        frog.tongue.y += frog.tongue.speed;
+    else if (unicorn.tongue.state === "inbound") {
+        unicorn.tongue.y += unicorn.tongue.speed;
         // The tongue stops if it hits the bottom
-        if (frog.tongue.y >= height) {
-            frog.tongue.state = "idle";
+        if (unicorn.tongue.y >= height) {
+            unicorn.tongue.state = "idle";
         }
     }
 }
 
 /**
- * Displays the tongue (tip and line connection) and the frog (body)
+ * Displays the tongue (tip and line connection) and the unicorn (body)
  */
-function drawFrog() {
+function drawUnicorn() {
     // Draw the tongue tip
     push();
     fill("#ff0000");
     noStroke();
-    ellipse(frog.tongue.x, frog.tongue.y, frog.tongue.size);
+    ellipse(unicorn.tongue.x, unicorn.tongue.y, unicorn.tongue.size);
     pop();
 
     // Draw the rest of the tongue
     push();
     stroke("#ff0000");
-    strokeWeight(frog.tongue.size);
-    line(frog.tongue.x, frog.tongue.y, frog.body.x, frog.body.y);
+    strokeWeight(unicorn.tongue.size);
+    line(unicorn.tongue.x, unicorn.tongue.y, unicorn.body.x, unicorn.body.y);
     pop();
 
-    // Draw the frog's body
+    // Draw the unicorn's body
     push();
     fill("#00ff00");
     noStroke();
-    ellipse(frog.body.x, frog.body.y, frog.body.size);
+    ellipse(unicorn.body.x, unicorn.body.y, unicorn.body.size);
     pop();
 }
 
@@ -148,14 +148,14 @@ function drawFrog() {
  */
 function checkTongueFlyOverlap() {
     // Get distance from tongue to fly
-    const d = dist(frog.tongue.x, frog.tongue.y, fly.x, fly.y);
+    const d = dist(unicorn.tongue.x, unicorn.tongue.y, fly.x, fly.y);
     // Check if it's an overlap
-    const eaten = (d < frog.tongue.size / 2 + fly.size / 2);
+    const eaten = (d < unicorn.tongue.size / 2 + fly.size / 2);
     if (eaten) {
         // Reset the fly
         resetFly();
         // Bring back the tongue
-        frog.tongue.state = "inbound";
+        unicorn.tongue.state = "inbound";
     }
 }
 
@@ -163,8 +163,8 @@ function checkTongueFlyOverlap() {
  * Launch the tongue on click (if it's not launched yet)
  */
 function mousePressed() {
-    if (frog.tongue.state === "idle") {
-        frog.tongue.state = "outbound";
+    if (unicorn.tongue.state === "idle") {
+        unicorn.tongue.state = "outbound";
     }
 }
 
@@ -349,9 +349,9 @@ function draw() {
 
     moveFly();
     drawFly();
-    moveFrog();
+    moveUnicorn();
     moveTongue();
-    drawFrog();
+    drawUnicorn();
     checkTongueFlyOverlap();
 
 }
