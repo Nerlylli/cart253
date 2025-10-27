@@ -13,6 +13,7 @@
  * https://p5js.org/
  */
 "use strict"
+let rainbow;
 
 let showInstructions = false;
 
@@ -279,11 +280,17 @@ function draw() {
         return;
     }
 
-    //Add a rainbow in the back
+    /*Add a rainbow in the back
     push();
     textSize(500);
     rotate(190);
     text("🌈", 200, -200);
+    pop();*/
+
+    //Draw the rainbow gif
+    push();
+    rotate(190);
+    image(rainbow, -50, -400);
     pop();
 
 
@@ -486,4 +493,8 @@ function draw() {
     drawCrown(540, 450, 40);
     drawCrown(600, 450, 40);
 
+}
+
+function preload() {
+    rainbow = loadImage("assets/images/rainbow.gif");
 }
