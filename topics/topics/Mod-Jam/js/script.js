@@ -6,8 +6,8 @@
  * 
  * Instructions:
  * - Move the unicorn with your mouse
- * - Click to launch the power of the horn
- * - Catch flies
+ * - Put the unicorn on top of the fly to eat them (no need to click)
+ * - Game goal: Catch flies
  * 
  * Made with p5
  * https://p5js.org/
@@ -16,6 +16,13 @@
 let rainbow;
 
 let showInstructions = false;
+
+// The unicorn 
+const unicorn = {
+    x: undefined,
+    y: undefined,
+    size: 50
+};
 
 function drawCrown(x, y, size) {
     push();
@@ -46,29 +53,13 @@ function setup() {
     resetFly();
 }
 
-// Our Unicorn
-const unicorn = {
-    body: {
-        x: 320,
-        y: 520,
-        size: 150
-    },
-    horn: {
-        x: undefined,
-        y: 480,
-        size: 20,
-        speed: 20,
-        state: "idle"
-    }
-};
-
 // Our fly
 // Has a position, size, and speed of horizontal movement
 const fly = {
     x: 0,
     y: 200, // Will be random
     size: 10,
-    speed: 3
+    speed: 7
 };
 
 /**
@@ -103,82 +94,8 @@ function resetFly() {
     fly.y = random(0, 300);
 }
 
-/**
- * Moves the unicorn to the mouse position on x
- */
-function moveUnicorn() {
-    unicorn.body.x = mouseX;
-}
-
-/**
- * Handles moving the horn based on its state
- */
-function moveHorn() {
-    // horn matches the unicorn's x
-    unicorn.horn.x = unicorn.body.x;
-    // If the horn is idle, it doesn't do anything
-    if (unicorn.horn.state === "idle") {
-        // Do nothing
-    }
-    // If the horn is outbound, it moves up
-    else if (unicorn.horn.state === "outbound") {
-        unicorn.horn.y += -unicorn.horn.speed;
-        // The horn bounces back if it hits the top
-        if (unicorn.horn.y <= 0) {
-            unicorn.horn.state = "inbound";
-        }
-    }
-    // If the horn is inbound, it moves down
-    else if (unicorn.horn.state === "inbound") {
-        unicorn.horn.y += unicorn.horn.speed;
-        // The horn stops if it hits the bottom
-        if (unicorn.horn.y >= height) {
-            unicorn.horn.state = "idle";
-        }
-    }
-}
-
-/**
- * Displays the horn (tip and line connection) and the unicorn (body)
- */
-function drawUnicorn() {
-
-    // Draw the unicorn's body
-    push();
-    fill("#00ff00");
-    noStroke();
-    ellipse(unicorn.body.x, unicorn.body.y, unicorn.body.size);
-    pop();
-
-    // Draw the rest of the horn
-    push();
-    stroke("#FF00C4");
-    strokeWeight(unicorn.horn.size);
-    line(unicorn.horn.x, unicorn.horn.y, unicorn.body.x, unicorn.body.y);
-    pop();
-}
-
-/**
- * Handles the horn overlapping the fly
- */
-function checkHornFlyOverlap() {
-    // Get distance from horn to fly
-    const d = dist(unicorn.horn.x, unicorn.horn.y, fly.x, fly.y);
-    // Check if it's an overlap
-    const eaten = (d < unicorn.horn.size / 2 + fly.size / 2);
-    if (eaten) {
-        // Reset the fly
-        resetFly();
-        // Bring back the horn
-        unicorn.horn.state = "inbound";
-    }
-}
-
 
 function mousePressed() {
-    if (unicorn.horn.state === "idle" && gameStarted) {
-        unicorn.horn.state = "outbound";
-    }
 
     /*Buttons before the game starts*/
     //YES button
@@ -202,6 +119,24 @@ function mousePressed() {
     }
 }
 
+function moveUnicorn() {
+    unicorn.x = mouseX;
+    unicorn.y = mouseY;
+}
+
+function drawUnicorn() {
+    textSize(unicorn.size);
+    textAlign(CENTER, CENTER);
+    text("🦄", unicorn.x, unicorn.y);
+}
+
+function checkFlyEaten() {
+    const d = dist(unicorn.x, unicorn.y, fly.x, fly.y);
+    // If unicorn and fly overlap
+    if (d < unicorn.size / 2 + fly.size / 2) {
+        resetFly(); // fly disappears and respawns
+    }
+}
 /*Draws the scenery*/
 function draw() {
     background(47, 203, 255);
@@ -519,14 +454,13 @@ function draw() {
 
     moveFly();
     drawFly();
-    moveUnicorn();
-    moveHorn();
     //Drawing the crowns on the bottom right of the canvas
     drawCrown(480, 450, 40);
     drawCrown(540, 450, 40);
     drawCrown(600, 450, 40);
+    moveUnicorn();
     drawUnicorn();
-    checkHornFlyOverlap();
+    checkFlyEaten();
 
     textSize(50)
     text("🦄", mouseX, mouseY); //Will replace the frog
