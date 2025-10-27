@@ -460,6 +460,19 @@ function draw() {
     drawUnicorn();
     checkHornFlyOverlap();
 
+    /*Inspired by P5 "Get Started" Tutorial by Layla Quiñones and Jaleesa Trapp*/
+    //emojis
+    textSize(25)
+    //Flower emojis to be diversified - different flowers
+    text("🌸", 100, 450); //flower
+    text("🌸", 200, 450); //flower
+    text("🌸", 300, 450); //flower
+    text("🌸", 400, 450); //flower
+    text("🌸", 500, 450); //flower
+    text("🌸", 600, 450); //flower
+    textSize(50)
+    text("🦄", mouseX, mouseY); //Will replace the frog
+
     //Drawing the crowns on the bottom right of the canvas
     drawCrown(480, 450, 40);
     drawCrown(540, 450, 40);
