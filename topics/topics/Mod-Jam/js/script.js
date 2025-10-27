@@ -279,6 +279,14 @@ function draw() {
         return;
     }
 
+    //Add a rainbow in the back
+    push();
+    textSize(500);
+    rotate(190);
+    text("🌈", 200, -200);
+    pop();
+
+
     /**
     *Mountain in the back
     *Put on top to be behind the castle
