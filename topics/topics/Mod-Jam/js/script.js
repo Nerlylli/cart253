@@ -280,13 +280,6 @@ function draw() {
         return;
     }
 
-    /*Add a rainbow in the back
-    push();
-    textSize(500);
-    rotate(190);
-    text("🌈", 200, -200);
-    pop();*/
-
     //Draw the rainbow gif
     push();
     rotate(190);
