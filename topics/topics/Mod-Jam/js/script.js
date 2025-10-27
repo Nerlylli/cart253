@@ -461,30 +461,75 @@ function draw() {
     ellipse(30, 510, 450, 350);
     pop();
 
+    /*Inspired by P5 "Get Started" Tutorial by Layla Quiñones and Jaleesa Trapp*/
+    /*flowers*/
+    //flowers on the middle-right
+    textSize(35)
+
+    text("🌼", 630, 360)
+    text("🌸", 630, 335);
+    text("🌼", 630, 315);
+    text("🌸", 630, 290);
+
+    text("🌸", 600, 365);
+    text("🌸", 570, 370);
+    text("🌼", 540, 375);
+    text("🌸", 510, 380);
+
+    text("🌸", 490, 357);
+    text("🌸", 445, 310);
+
+    text("🌼", 470, 300);
+    text("🌸", 500, 295);
+    text("🌸", 530, 290);
+    text("🌼", 560, 285);
+    text("🌼", 590, 280);
+    text("🌸", 620, 275);
+    text("🌸", 620, 275);
+
+    text("🌸", 470, 335);
+    text("🌼", 500, 335);
+    text("🌸", 530, 335);
+    text("🌸", 560, 335);
+    text("🌼", 590, 335);
+    text("🌸", 620, 335);
+
+    text("🌸", 520, 357);
+    text("🌼", 550, 357);
+    text("🌸", 580, 357);
+    text("🌸", 610, 357);
+
+    text("🌸", 445, 310);
+    text("🌸", 475, 310);
+    text("🌸", 505, 310);
+    text("🌼", 535, 310);
+    text("🌸", 565, 310);
+    text("🌸", 595, 310);
+    text("🌸", 625, 310);
+
+    text("🌼", 620, 300);
+
+    //flowers on the bottom-left
+    text("🌺", 150, 395);
+    text("🌺", 40, 370);
+    text("🌺", 40, 450);
+    text("🌺", 95, 420);
+    text("🌺", 185, 460);
+
+
     moveFly();
     drawFly();
     moveUnicorn();
     moveHorn();
-    drawUnicorn();
-    checkHornFlyOverlap();
-
-    /*Inspired by P5 "Get Started" Tutorial by Layla Quiñones and Jaleesa Trapp*/
-    //emojis
-    textSize(25)
-    //Flower emojis to be diversified - different flowers
-    text("🌸", 100, 450); //flower
-    text("🌸", 200, 450); //flower
-    text("🌸", 300, 450); //flower
-    text("🌸", 400, 450); //flower
-    text("🌸", 500, 450); //flower
-    text("🌸", 600, 450); //flower
-    textSize(50)
-    text("🦄", mouseX, mouseY); //Will replace the frog
-
     //Drawing the crowns on the bottom right of the canvas
     drawCrown(480, 450, 40);
     drawCrown(540, 450, 40);
     drawCrown(600, 450, 40);
+    drawUnicorn();
+    checkHornFlyOverlap();
+
+    textSize(50)
+    text("🦄", mouseX, mouseY); //Will replace the frog
 
 }
 
