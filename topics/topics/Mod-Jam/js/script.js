@@ -17,6 +17,13 @@ let rainbow;
 
 let showInstructions = false;
 
+//Flies
+let fly1 = undefined;
+let fly2 = undefined;
+let fly3 = undefined;
+let fly4 = undefined;
+let fly5 = undefined;
+
 // The unicorn 
 const unicorn = {
     x: undefined,
@@ -49,39 +56,53 @@ let believeQuestion = true; // true = show the question screen first
 function setup() {
     createCanvas(640, 480);
 
+    //Create the flies
+    fly1 = createFly();
+    fly2 = createFly();
+    fly3 = createFly();
+    fly4 = createFly();
+    fly5 = createFly();
+
     //Give the fly its first random position
-    resetFly();
+    resetFly(fly1);
+    resetFly(fly2);
+    resetFly(fly3);
+    resetFly(fly4);
+    resetFly(fly5);
 }
 
-// Our fly
-// Has a position, size, and speed of horizontal movement
-const fly = {
-    x: 0,
-    y: 200, // Will be random
-    size: 10,
-    speed: 7
-};
+function createFly() {
+    let fly = {
+        x: 0,
+        y: 200, // Will be random
+        size: 10,
+        speed: random(4, 9)
+    };
+
+    return fly;
+}
 
 /**
  * Moves the fly according to its speed
  * Resets the fly if it gets all the way to the right
  */
-function moveFly() {
+function moveFly(fly) {
     // Move the fly
     fly.x += fly.speed;
     // Handle the fly going off the canvas
     if (fly.x > width) {
-        resetFly();
+        resetFly(fly);
     }
 }
 
 /**
  * Draws the fly as a black circle
  */
-function drawFly() {
+function drawFly(fly) {
     push();
     noStroke();
     fill("#000000");
+    console.log(fly.x, fly.y)
     ellipse(fly.x, fly.y, fly.size);
     pop();
 }
@@ -89,7 +110,7 @@ function drawFly() {
 /**
  * Resets the fly to the left with a random y
  */
-function resetFly() {
+function resetFly(fly) {
     fly.x = 0;
     fly.y = random(0, 300);
 }
@@ -130,11 +151,11 @@ function drawUnicorn() {
     text("🦄", unicorn.x, unicorn.y);
 }
 
-function checkFlyEaten() {
+function checkFlyEaten(fly) {
     const d = dist(unicorn.x, unicorn.y, fly.x, fly.y);
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + fly.size / 2) {
-        resetFly(); // fly disappears and respawns
+        resetFly(fly); // fly disappears and respawns
     }
 }
 /*Draws the scenery*/
@@ -451,22 +472,40 @@ function draw() {
     text("🌺", 95, 420);
     text("🌺", 185, 460);
 
+    //Movement of the fly
+    moveFly(fly1);
+    moveFly(fly2);
+    moveFly(fly3);
+    moveFly(fly4);
+    moveFly(fly5);
 
-    moveFly();
-    drawFly();
+    //Drawing the fly
+    drawFly(fly1);
+    drawFly(fly2);
+    drawFly(fly3);
+    drawFly(fly4);
+    drawFly(fly5);
+
     //Drawing the crowns on the bottom right of the canvas
     drawCrown(480, 450, 40);
     drawCrown(540, 450, 40);
     drawCrown(600, 450, 40);
     moveUnicorn();
     drawUnicorn();
-    checkFlyEaten();
+    checkFlyEaten(fly1);
+    checkFlyEaten(fly2);
+    checkFlyEaten(fly3);
+    checkFlyEaten(fly4);
+    checkFlyEaten(fly5);
 
+
+    //The unicorn
     textSize(50)
     text("🦄", mouseX, mouseY); //Will replace the frog
 
 }
 
+//The rainbow 
 function preload() {
     rainbow = loadImage("assets/images/rainbow.gif");
 }
