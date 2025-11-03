@@ -13,6 +13,8 @@
  * https://p5js.org/
  */
 "use strict"
+let score = 0;
+
 let rainbow;
 
 let showInstructions = false;
@@ -93,11 +95,11 @@ function setup() {
     resetDead(dead3);
 
     /**
-     * The extra-life fly
+     * The extra-life fairy
      */
-    //Create the extra-life fly
+    //Create the extra-life fairy
     life = createLife(life);
-    //Give the extra-life fly its first random position
+    //Give the extra-life fairy its first random position
     resetLife(life);
 }
 
@@ -162,8 +164,8 @@ function moveDead(dead) {
 }
 
 /**
- * Moves the extra-life fly according to its speed
- * Resets the extra-life fly if it gets all the way to the right
+ * Moves the extra-life fairy according to its speed
+ * Resets the extra-life fairy if it gets all the way to the right
  */
 function moveLife(life) {
     // Move the fly
@@ -197,7 +199,7 @@ function drawDead(dead) {
 }
 
 /**
- * Draws the extra-life fly as a gold circle
+ * Draws the extra-life fairy as a gold circle
  */
 function drawLife(life) {
     textSize(life.size);
@@ -221,7 +223,7 @@ function resetDead(dead) {
 }
 
 /**
- * Resets the extra-life fly to the left with a random y
+ * Resets the extra-life fairy to the left with a random y
  */
 function resetLife(life) {
     life.x = 0;
@@ -267,6 +269,7 @@ function checkFlyEaten(fly) {
     const d = dist(unicorn.x, unicorn.y, fly.x, fly.y);
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + fly.size / 2) {
+        score += 1; //Gains a point
         resetFly(fly); // fly disappears and respawns
     }
 }
@@ -275,7 +278,11 @@ function checkDeadEaten(dead) {
     const d = dist(unicorn.x, unicorn.y, dead.x, dead.y);
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + dead.size / 2) {
-        resetDead(dead); // deadly fly disappears and respawns
+        score -= 1; //Loses a point
+        if (score < 0) {
+            score = 0; //The score cannot be lower than 0
+            resetDead(dead); // deadly fly disappears and respawns
+        }
     }
 }
 
@@ -283,7 +290,7 @@ function checkLifeEaten(life) {
     const d = dist(unicorn.x, unicorn.y, life.x, life.y);
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + life.size / 2) {
-        resetLife(life); // extra-life fly disappears and respawns
+        resetLife(life); // extra-life fairy disappears and respawns
     }
 }
 
@@ -649,7 +656,7 @@ function draw() {
     checkDeadEaten(dead3);
 
     /**
-     * The extra-life flies
+     * The extra-life fairy
      */
     //Movement
     moveLife(life);
@@ -665,11 +672,16 @@ function draw() {
     moveUnicorn();
     drawUnicorn();
 
-
-
     //The unicorn
     textSize(50)
     text("🦄", mouseX, mouseY); //Will replace the frog
+
+    //Display score
+    push();
+    fill(255);
+    textSize(100);
+    text(score, 300, 350);
+    pop();
 
 }
 
