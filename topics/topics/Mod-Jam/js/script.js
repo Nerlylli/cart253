@@ -36,6 +36,9 @@ let dead1 = undefined;
 let dead2 = undefined;
 let dead3 = undefined;
 
+//Extra life fly
+let life = undefined;
+
 function drawCrown(x, y, size) {
     push();
     translate(x, y);
@@ -60,7 +63,6 @@ let believeQuestion = true; // true = show the question screen first
 /*Creates the canvas*/
 function setup() {
     createCanvas(640, 480);
-
 
     /**
      * The normal flies
@@ -89,6 +91,14 @@ function setup() {
     resetDead(dead1);
     resetDead(dead2);
     resetDead(dead3);
+
+    /**
+     * The extra-life fly
+     */
+    //Create the extra-life fly
+    life = createLife(life);
+    //Give the extra-life fly its first random position
+    resetLife(life);
 }
 
 function createFly() {
@@ -112,6 +122,18 @@ function createDead() {
 
     return dead;
 }
+
+function createLife() {
+    let life = {
+        x: 0,
+        y: 200, // Will be random
+        size: 15,
+        speed: random(7, 10)
+    }
+
+    return life;
+}
+
 
 /**
  * Moves the fly according to its speed
@@ -140,6 +162,19 @@ function moveDead(dead) {
 }
 
 /**
+ * Moves the extra-life fly according to its speed
+ * Resets the extra-life fly if it gets all the way to the right
+ */
+function moveLife(life) {
+    // Move the fly
+    life.x += life.speed;
+    // Handle the fly going off the canvas
+    if (life.x > width) {
+        resetLife(life);
+    }
+}
+
+/**
  * Draws the fly as blue circle
  */
 function drawFly(fly) {
@@ -162,6 +197,17 @@ function drawDead(dead) {
 }
 
 /**
+ * Draws the extra-life fly as a gold circle
+ */
+function drawLife(life) {
+    push();
+    noStroke();
+    fill("gold");
+    ellipse(life.x, life.y, life.size);
+    pop();
+}
+
+/**
  * Resets the fly to the left with a random y
  */
 function resetFly(fly) {
@@ -175,6 +221,14 @@ function resetFly(fly) {
 function resetDead(dead) {
     dead.x = 0;
     dead.y = random(0, 300);
+}
+
+/**
+ * Resets the extra-life fly to the left with a random y
+ */
+function resetLife(life) {
+    life.x = 0;
+    life.y = random(0, 300);
 }
 
 function mousePressed() {
@@ -225,6 +279,14 @@ function checkDeadEaten(dead) {
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + dead.size / 2) {
         resetDead(dead); // deadly fly disappears and respawns
+    }
+}
+
+function checkLifeEaten(life) {
+    const d = dist(unicorn.x, unicorn.y, life.x, life.y);
+    // If unicorn and fly overlap
+    if (d < unicorn.size / 2 + life.size / 2) {
+        resetLife(life); // extra-life fly disappears and respawns
     }
 }
 
@@ -542,7 +604,6 @@ function draw() {
     text("🌺", 95, 420);
     text("🌺", 185, 460);
 
-
     /**
      * The normal flies
      */
@@ -580,6 +641,16 @@ function draw() {
     checkDeadEaten(dead1);
     checkDeadEaten(dead2);
     checkDeadEaten(dead3);
+
+    /**
+     * The extra-life flies
+     */
+    //Movement
+    moveLife(life);
+    //Drawing
+    drawLife(life);
+    //Fly being eaten
+    checkLifeEaten(life);
 
     //Drawing the crowns on the bottom right of the canvas
     drawCrown(480, 450, 40);
