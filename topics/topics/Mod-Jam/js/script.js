@@ -127,7 +127,7 @@ function createLife() {
     let life = {
         x: 0,
         y: 200, // Will be random
-        size: 10,
+        size: 20,
         speed: random(8, 12)
     }
 
@@ -200,11 +200,8 @@ function drawDead(dead) {
  * Draws the extra-life fly as a gold circle
  */
 function drawLife(life) {
-    push();
-    noStroke();
-    fill("gold");
-    ellipse(life.x, life.y, life.size);
-    pop();
+    textSize(life.size);
+    text("🧚🏾", life.x, life.y);
 }
 
 /**
@@ -349,10 +346,9 @@ function draw() {
             "Eat as much blue flies are you can, and\n" +
             "avoid the black flies, as they are poisonous.\n" +
             "\n" +
-            "Don't worry. Sometimes, gold flies pass through\n" +
-            "the screen in the hopes that you see them. Eat\n" +
-            "them, and you'll regain a little bit of life back.\n" +
-            "Or don't.\n",
+            "Don't worry. Sometimes, little fairies rapidly pass through\n" +
+            "the screen in the hopes that you don't see them. Eat\n" +
+            "them to regain a little bit of life back. Or don't.\n",
             width / 2,
             height / 1.8);
         //OK button
