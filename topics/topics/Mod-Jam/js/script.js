@@ -279,10 +279,8 @@ function checkDeadEaten(dead) {
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + dead.size / 2) {
         score -= 1; //Loses a point
-        if (score < 0) {
-            score = 0; //The score cannot be lower than 0
-            resetDead(dead); // deadly fly disappears and respawns
-        }
+        score <= 0; //The score cannot be lower than 0
+        resetDead(dead); // deadly fly disappears and respawns
     }
 }
 
@@ -669,12 +667,10 @@ function draw() {
     drawCrown(480, 450, 40);
     drawCrown(540, 450, 40);
     drawCrown(600, 450, 40);
+
+    //The Unicorn
     moveUnicorn();
     drawUnicorn();
-
-    //The unicorn
-    textSize(50)
-    text("🦄", mouseX, mouseY); //Will replace the frog
 
     //Display score
     push();
