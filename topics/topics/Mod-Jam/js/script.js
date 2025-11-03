@@ -31,6 +31,11 @@ const unicorn = {
     size: 50
 };
 
+//Deadly flies
+let dead1 = undefined;
+let dead2 = undefined;
+let dead3 = undefined;
+
 function drawCrown(x, y, size) {
     push();
     translate(x, y);
@@ -56,19 +61,34 @@ let believeQuestion = true; // true = show the question screen first
 function setup() {
     createCanvas(640, 480);
 
+
+    /**
+     * The normal flies
+     */
     //Create the flies
     fly1 = createFly();
     fly2 = createFly();
     fly3 = createFly();
     fly4 = createFly();
     fly5 = createFly();
-
     //Give the fly its first random position
     resetFly(fly1);
     resetFly(fly2);
     resetFly(fly3);
     resetFly(fly4);
     resetFly(fly5);
+
+    /**
+     * The deadly flies
+     */
+    //Create the deadly flies
+    dead1 = createDead();
+    dead2 = createDead();
+    dead3 = createDead();
+    //Give the deadly fly its first random position
+    resetDead(dead1);
+    resetDead(dead2);
+    resetDead(dead3);
 }
 
 function createFly() {
@@ -80,6 +100,17 @@ function createFly() {
     };
 
     return fly;
+}
+
+function createDead() {
+    let dead = {
+        x: 0,
+        y: 200, // Will be random
+        size: 15,
+        speed: random(3, 7)
+    }
+
+    return dead;
 }
 
 /**
@@ -96,14 +127,37 @@ function moveFly(fly) {
 }
 
 /**
- * Draws the fly as a black circle
+ * Moves the deadly fly according to its speed
+ * Resets the deadly fly if it gets all the way to the right
+ */
+function moveDead(dead) {
+    // Move the fly
+    dead.x += dead.speed;
+    // Handle the fly going off the canvas
+    if (dead.x > width) {
+        resetDead(dead);
+    }
+}
+
+/**
+ * Draws the fly as blue circle
  */
 function drawFly(fly) {
     push();
+    stroke("#2e60a8");
+    fill("#4d8ec1");
+    ellipse(fly.x, fly.y, fly.size);
+    pop();
+}
+
+/**
+ * Draws the deadly fly as a black circle
+ */
+function drawDead(dead) {
+    push();
     noStroke();
     fill("#000000");
-    console.log(fly.x, fly.y)
-    ellipse(fly.x, fly.y, fly.size);
+    ellipse(dead.x, dead.y, dead.size);
     pop();
 }
 
@@ -115,6 +169,13 @@ function resetFly(fly) {
     fly.y = random(0, 300);
 }
 
+/**
+ * Resets the deadly fly to the left with a random y
+ */
+function resetDead(dead) {
+    dead.x = 0;
+    dead.y = random(0, 300);
+}
 
 function mousePressed() {
 
@@ -158,6 +219,15 @@ function checkFlyEaten(fly) {
         resetFly(fly); // fly disappears and respawns
     }
 }
+
+function checkDeadEaten(dead) {
+    const d = dist(unicorn.x, unicorn.y, dead.x, dead.y);
+    // If unicorn and fly overlap
+    if (d < unicorn.size / 2 + dead.size / 2) {
+        resetDead(dead); // deadly fly disappears and respawns
+    }
+}
+
 /*Draws the scenery*/
 function draw() {
     background(47, 203, 255);
@@ -472,19 +542,44 @@ function draw() {
     text("🌺", 95, 420);
     text("🌺", 185, 460);
 
+
+    /**
+     * The normal flies
+     */
     //Movement of the fly
     moveFly(fly1);
     moveFly(fly2);
     moveFly(fly3);
     moveFly(fly4);
     moveFly(fly5);
-
     //Drawing the fly
     drawFly(fly1);
     drawFly(fly2);
     drawFly(fly3);
     drawFly(fly4);
     drawFly(fly5);
+    //Flies being eaten
+    checkFlyEaten(fly1);
+    checkFlyEaten(fly2);
+    checkFlyEaten(fly3);
+    checkFlyEaten(fly4);
+    checkFlyEaten(fly5);
+
+    /**
+     * The deadly flies
+     */
+    ///Movement 
+    moveDead(dead1);
+    moveDead(dead2);
+    moveDead(dead3);
+    //Drawing 
+    drawDead(dead1);
+    drawDead(dead2);
+    drawDead(dead3);
+    //Deadly flies being eaten
+    checkDeadEaten(dead1);
+    checkDeadEaten(dead2);
+    checkDeadEaten(dead3);
 
     //Drawing the crowns on the bottom right of the canvas
     drawCrown(480, 450, 40);
@@ -492,11 +587,7 @@ function draw() {
     drawCrown(600, 450, 40);
     moveUnicorn();
     drawUnicorn();
-    checkFlyEaten(fly1);
-    checkFlyEaten(fly2);
-    checkFlyEaten(fly3);
-    checkFlyEaten(fly4);
-    checkFlyEaten(fly5);
+
 
 
     //The unicorn
