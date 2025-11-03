@@ -106,7 +106,7 @@ function createFly() {
         x: 0,
         y: 200, // Will be random
         size: 10,
-        speed: random(4, 9)
+        speed: random(4, 10)
     };
 
     return fly;
@@ -127,8 +127,8 @@ function createLife() {
     let life = {
         x: 0,
         y: 200, // Will be random
-        size: 15,
-        speed: random(7, 10)
+        size: 10,
+        speed: random(8, 12)
     }
 
     return life;
@@ -327,7 +327,10 @@ function draw() {
         return;
     }
 
-    // Instructions screen
+    /**
+     * Instructions screen
+     */
+    //Wow! A believer!
     if (showInstructions) {
         textAlign(CENTER, CENTER);
         textSize(28);
@@ -336,15 +339,23 @@ function draw() {
         strokeWeight(2);
         text("Wow! A believer!",
             width / 2,
-            height / 2 - 50);
+            height / 2 - 150);
+        //Mission text
         textSize(20);
         noStroke();
-        text("Your mission is\n" +
-            "to protect the palace from\n" +
-            "all the flies that are infesting\n" +
-            "the area!",
+        text("Your mission is to protect the castle\n" +
+            "from all the flies that infesting the area.\n" +
+            "\n" +
+            "Eat as much blue flies are you can, and\n" +
+            "avoid the black flies, as they are poisonous.\n" +
+            "\n" +
+            "Don't worry. Sometimes, gold flies pass through\n" +
+            "the screen in the hopes that you see them. Eat\n" +
+            "them, and you'll regain a little bit of life back.\n" +
+            "Or don't.\n",
             width / 2,
             height / 1.8);
+        //OK button
         fill("#6aff6a");
         stroke(0);
         rect(270, 400, 100, 50, 10);
@@ -373,7 +384,6 @@ function draw() {
     rotate(190);
     image(rainbow, -50, -400);
     pop();
-
 
     /**
     *Mountain in the back
