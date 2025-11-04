@@ -13,7 +13,10 @@
  * https://p5js.org/
  */
 "use strict"
+//checks how many deadly flies have been eaten
 let score = 0;
+
+let deadEaten = 0;
 
 let rainbow;
 
@@ -188,13 +191,12 @@ function createLife() {
     let life = {
         x: 0,
         y: 200, // Will be random
-        size: 20,
-        speed: random(8, 12)
+        size: 15,
+        speed: random(10, 15)
     }
 
     return life;
 }
-
 
 /**
  * Moves the fly according to its speed
@@ -337,8 +339,7 @@ function checkDeadEaten(dead) {
     const d = dist(unicorn.x, unicorn.y, dead.x, dead.y);
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + dead.size / 2) {
-        score -= 1; //Loses a point
-        score <= 0; //The score cannot be lower than 0
+        deadEaten += 1;
         resetDead(dead); // deadly fly disappears and respawns
     }
 }
@@ -347,7 +348,11 @@ function checkLifeEaten(life) {
     const d = dist(unicorn.x, unicorn.y, life.x, life.y);
     // If unicorn and fly overlap
     if (d < unicorn.size / 2 + life.size / 2) {
-        resetLife(life); // extra-life fairy disappears and respawns
+        if (deadEaten > 0) {
+            deadEaten -= 5; //crown reappears
+            if (deadEaten < 0) deadEaten = 0; // can't go negative
+            resetLife(life); // extra-life fairy disappears and respawns
+        }
     }
 }
 
@@ -568,22 +573,24 @@ function draw() {
     //Fly being eaten
     checkLifeEaten(life);
 
-    //Drawing the crowns on the bottom right of the canvas
-    drawCrown(480, 450, 40);
-    drawCrown(540, 450, 40);
-    drawCrown(600, 450, 40);
+    /**
+     *  Drawing crowns on the bottom right of the canvas
+     * Whenever the player eats 5 deadly flies, one crown disappears
+     */
+    if (deadEaten < 5) drawCrown(480, 450, 40); // First crown
+    if (deadEaten < 10) drawCrown(540, 450, 40); // Second crown
+    if (deadEaten < 15) drawCrown(600, 450, 40); // Third crown
 
     //The Unicorn
     moveUnicorn();
     drawUnicorn();
 
     //Display score
-    // push();
-    // fill(255);
-    // textSize(100);
-    // text(score, 300, 350);
-    // pop();
-
+    push();
+    fill(255);
+    textSize(100);
+    text(score, 300, 350);
+    pop();
 }
 
 //The rainbow 
