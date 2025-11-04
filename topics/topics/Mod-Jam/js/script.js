@@ -59,6 +59,65 @@ function drawCrown(x, y, size) {
     pop();
 }
 
+function drawCastle() {
+    //The bases
+    push();
+    stroke(255, 147, 172);
+    fill(255, 194, 205);
+    rect(370, 185, 250, 120); //Last base
+    rect(465, 135, 100, 50); //Third base
+    rect(440, 95, 150, 40); //Second base
+    rect(480, 25, 65, 70); //First base
+    rect(370, 125, 50, 180); //Left tower
+    rect(620, 125, 50, 180); //Right tower
+    pop();
+
+    //The roofs
+    push();
+    stroke(255, 98, 137);
+    fill(255, 147, 172);
+    triangle(367, 130, 395, 75, 423, 130);
+    triangle(617, 130, 645, 75, 673, 130);
+    triangle(470, 30, 513, -15, 555, 30);
+    pop();
+}
+
+function drawWindows(x, y, w, h) {
+    //Yellow windows = lights on
+    push();
+    stroke(255, 98, 137);
+    fill(255, 237, 179);
+    rect(387, 160, 15, 30); // Left tower 1
+    rect(505, 40, 15, 40); // Top base window
+    rect(510, 220, 15, 40); // Last base 2
+    pop();
+
+    //Blue windows = lights off
+    push();
+    stroke(255, 98, 137);
+    fill(225, 237, 240);
+    rect(387, 250, 15, 30), // Left tower 2
+        rect(450, 220, 15, 40), // Last base 1
+        rect(570, 220, 15, 40), // Last base 3
+        rect(635, 160, 15, 30), // Right tower 1
+        rect(635, 250, 15, 30),// Right tower 2
+        rect(480, 155, 15, 30), // Third base 1
+        rect(535, 155, 15, 30), // Third base 2
+        pop();
+}
+
+function drawMountains() {
+    noStroke();
+    fill(35, 144, 79);
+    ellipse(600, 500, 730, 450); //Far Right
+    fill(71, 218, 116);
+    ellipse(290, 455, 450, 370); //Middle
+    fill(30, 196, 100);
+    ellipse(650, 560, 600, 370); //In-between middle and far right
+    fill(35, 144, 79);
+    ellipse(30, 510, 450, 350); //Far Left
+}
+
 let gameStarted = false;
 let believeQuestion = true; // true = show the question screen first
 
@@ -396,169 +455,15 @@ function draw() {
     ellipse(750, 500, 600, 1000);
     pop();
 
-    /**
-    *Castle
-    */
+    //Castle
+    drawCastle();
 
-    /*The bases of the castle*/
-    //Last base
-    push();
-    stroke(255, 147, 172);
-    fill(255, 194, 205);
-    rect(370, 185, 250, 120);
-    pop();
-    //Third base
-    push();
-    stroke(255, 147, 172);
-    fill(255, 194, 205);
-    rect(465, 135, 100, 50);
-    pop();
-    //Second base
-    push();
-    stroke(255, 147, 172);
-    fill(255, 194, 205);
-    rect(440, 95, 150, 40);
-    pop();
-    //First base
-    push();
-    stroke(255, 147, 172);
-    fill(255, 194, 205);
-    rect(480, 25, 65, 70);
-    pop();
-    //Tower, left
-    push();
-    stroke(255, 147, 172);
-    fill(255, 194, 205);
-    rect(370, 125, 50, 180);
-    pop();
-    //Tower, right
-    push();
-    stroke(255, 147, 172);
-    fill(255, 194, 205);
-    rect(620, 125, 50, 180);
-    pop();
+    //Castle
+    drawWindows();
 
-    /**
-    The windows of the castle
-    */
+    //Mountains
+    drawMountains();
 
-    /*Left Tower*/
-    //1st 
-    push();
-    stroke(255, 98, 137);
-    fill(255, 237, 179);
-    rect(387, 160, 15, 30);
-    pop();
-    //2nd
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(387, 250, 15, 30);
-    pop();
-
-    /*Last base*/
-    //1st
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(450, 220, 15, 40);
-    pop();
-    //2nd
-    push();
-    stroke(255, 98, 137);
-    fill(255, 237, 179);
-    rect(510, 220, 15, 40);
-    pop();
-    //3rd
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(570, 220, 15, 40);
-    pop();
-
-    /*Right Tower*/
-    //1st
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(635, 160, 15, 30);
-    pop();
-    //2nd
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(635, 250, 15, 30);
-    pop();
-
-    /*Third base*/
-    //1st 
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(480, 155, 15, 30);
-    pop();
-    //2nd
-    push();
-    stroke(255, 98, 137);
-    fill(225, 237, 240);
-    rect(535, 155, 15, 30);
-    pop();
-
-    //First base window
-    push();
-    stroke(255, 98, 137);
-    fill(255, 237, 179);
-    rect(505, 40, 15, 40);
-    pop();
-
-    /**
-    *Roof
-    */
-
-    //Left tower
-    push();
-    stroke(255, 98, 137);
-    fill(255, 147, 172);
-    triangle(367, 130, 395, 75, 423, 130);
-    pop();
-    //Right tower
-    push();
-    stroke(255, 98, 137);
-    fill(255, 147, 172);
-    triangle(617, 130, 645, 75, 673, 130);
-    pop();
-    //First base
-    push();
-    stroke(255, 98, 137);
-    fill(255, 147, 172);
-    triangle(470, 30, 513, -15, 555, 30);
-    pop();
-
-    /*Mountains*/
-    //Far Right
-    push();
-    noStroke();
-    fill(35, 144, 79);
-    ellipse(600, 500, 730, 450);
-    pop();
-    //Middle
-    push();
-    noStroke();
-    fill(71, 218, 116);
-    ellipse(290, 455, 450, 370);
-    pop();
-    //In-between middle and far right
-    push();
-    noStroke();
-    fill(30, 196, 100);
-    ellipse(650, 560, 600, 370);
-    pop();
-    //Far Left
-    push();
-    noStroke();
-    fill(35, 144, 79);
-    ellipse(30, 510, 450, 350);
-    pop();
 
     /*Inspired by P5 "Get Started" Tutorial by Layla Quiñones and Jaleesa Trapp*/
     /*flowers*/
@@ -673,11 +578,11 @@ function draw() {
     drawUnicorn();
 
     //Display score
-    push();
-    fill(255);
-    textSize(100);
-    text(score, 300, 350);
-    pop();
+    // push();
+    // fill(255);
+    // textSize(100);
+    // text(score, 300, 350);
+    // pop();
 
 }
 
