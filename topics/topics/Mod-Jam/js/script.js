@@ -20,6 +20,8 @@ let deadEaten = 0;
 
 let rainbow;
 
+let deadUnicorn;
+
 let showInstructions = false;
 
 //Flies
@@ -595,8 +597,8 @@ function draw() {
     //To win the game, needs to eat at least 100 blue flies
     if (score >= 100) {
         noLoop();
+        background('white');
 
-        background(0, 200, 255);
         //A bunch of butterflies everywhere 
         for (let i = 0; i < 50; i++) {
             fill(random(200, 255),
@@ -607,16 +609,35 @@ function draw() {
             text("ʚïɞ", starX, starY)
         }
         //Winning message
-        textSize(70);
+        textSize(30);
+        stroke(0, 200, 255)
         fill('pink');
         text("𓃗", 320, 200);
+        text("𝓨𝓪𝔂𝔂!!\n" +
+            "𝓨𝓸𝓾 𝓹𝓻𝓸𝓽𝓮𝓬𝓽𝓮𝓭 𝓽𝓱𝓮 𝓹𝓪𝓵𝓪𝓬𝓮!\n" +
+            "𝓣𝓱𝓮 𝓾𝓷𝓲𝓬𝓸𝓻𝓷𝓼 𝓪𝓻𝓮 𝓼𝓸 𝓹𝓻𝓸𝓾𝓭 𝓸𝓯 𝔂𝓸𝓾!", 320, 260);
+    }
+    //When all the crowns are gone, the game is lost
+    if (deadEaten >= 15) {
+        noLoop();
+        background(deadUnicorn);
+
+        //Losing Message
+        textSize(70);
+        stroke('white');
+        fill('#990148');
+        text("(×ཀ×)", 320, 180);
         textSize(24);
-        text("Yayy!! You protected the palace!\n" +
-            "The unicorns are so proud of you", 320, 260);
+        text("Oh no!! The castle was unprotected!!\n" +
+            "The deadly flies have now invaded the palace..\n" +
+            "AND... OH! MY! GOD!\n" +
+            "All the unicorns have died...", 320, 280);
     }
 }
 
 //The rainbow 
 function preload() {
     rainbow = loadImage("assets/images/rainbow.gif");
+    deadUnicorn = loadImage("assets/images/deadunicorn.png")
+
 }
