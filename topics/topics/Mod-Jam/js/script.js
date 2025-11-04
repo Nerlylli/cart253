@@ -581,16 +581,39 @@ function draw() {
     if (deadEaten < 10) drawCrown(540, 450, 40); // Second crown
     if (deadEaten < 15) drawCrown(600, 450, 40); // Third crown
 
-    //The Unicorn
-    moveUnicorn();
-    drawUnicorn();
-
     //Display score
     push();
     fill(255);
     textSize(100);
     text(score, 300, 350);
     pop();
+
+    //The Unicorn
+    moveUnicorn();
+    drawUnicorn();
+
+    //To win the game, needs to eat at least 100 blue flies
+    if (score >= 100) {
+        noLoop();
+
+        background(0, 200, 255);
+        //A bunch of butterflies everywhere 
+        for (let i = 0; i < 50; i++) {
+            fill(random(200, 255),
+                random(200, 255), 255,
+                random(100, 255));
+            let starX = random(0, 640);
+            let starY = random(0, 480);
+            text("ʚïɞ", starX, starY)
+        }
+        //Winning message
+        textSize(70);
+        fill('pink');
+        text("𓃗", 320, 200);
+        textSize(24);
+        text("Yayy!! You protected the palace!\n" +
+            "The unicorns are so proud of you", 320, 260);
+    }
 }
 
 //The rainbow 
