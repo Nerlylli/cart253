@@ -672,7 +672,7 @@ function draw() {
         text("Oh no!! The castle was unprotected!!\n" +
             "The deadly flies have now invaded the palace..\n" +
             "AND... OH! MY! GOD!\n" +
-            "All the unicorns have died...", 320, 280);
+            "All the unicorns have been captured!...", 320, 280);
     }
 }
 
