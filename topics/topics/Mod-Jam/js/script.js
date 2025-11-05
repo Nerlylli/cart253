@@ -149,10 +149,6 @@ function drawHealth() {
 
     colorMode(RGB, 255); // Reset color mode for other drawing
 
-    //Unicorn on the left of the health bar
-    // imageMode(CENTER);
-    // image(healthyUnicorn, 40, 20, 60, 60);
-
     //Draw unicorn on the left of the health bar
     push();
     image(healthyUnicorn, 20, -2, 60, 60);
@@ -498,11 +494,6 @@ function draw() {
     rotate(190);
     image(rainbow, -100, -400);
     pop();
-
-    // //Draw the healthy unicorn gif
-    // push();
-    // image(healthyUnicorn, 40, 20, 60, 60);
-    // pop();
 
     /**
     *Mountain in the back
