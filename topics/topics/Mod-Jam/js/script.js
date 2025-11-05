@@ -444,8 +444,8 @@ function draw() {
         //Mission text
         textSize(20);
         noStroke();
-        text("Your mission is to protect the castle\n" +
-            "from all the flies that are infesting the area.\n" +
+        text("Your mission is to protect the castle from all the flies that are\n" +
+            "infesting the area. Your score is recorded on the top left.\n" +
             "Eat 100 blue flies and your mission is complete fellow believer!\n" +
             "\n" +
             "However, you want to avoid the black flies, as they are poisonous..\n" +
