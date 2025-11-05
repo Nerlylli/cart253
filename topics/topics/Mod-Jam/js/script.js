@@ -133,11 +133,6 @@ function drawHealth() {
     health = map(score, 0, 100, 0, maxHealth);
     let barWidth = map(health, 0, maxHealth, 0, 400);
 
-    //The actual bar
-    stroke(255, 142, 255);
-    strokeWeight(4);
-    noFill();
-    rect(40, 10, 400, 20);
     /**
      *The fill
      */
@@ -653,9 +648,11 @@ function draw() {
             "𝓣𝓱𝓮 𝓾𝓷𝓲𝓬𝓸𝓻𝓷𝓼 𝓪𝓻𝓮 𝓼𝓸 𝓹𝓻𝓸𝓾𝓭 𝓸𝓯 𝔂𝓸𝓾!", 320, 260);
     }
     //When all the crowns are gone, the game is lost
-    if (deadEaten >= 15) {
+    if (deadEaten >= 3) {
         noLoop();
-        background(deadUnicorn);
+
+        imageMode(CENTER);
+        image(deadUnicorn, 320, 240, 640, 480);
 
         //Losing Message
         textSize(70);
@@ -670,7 +667,7 @@ function draw() {
     }
 }
 
-//The rainbow 
+//The images
 function preload() {
     rainbow = loadImage("assets/images/rainbow.gif");
     deadUnicorn = loadImage("assets/images/deadunicorn.png")
