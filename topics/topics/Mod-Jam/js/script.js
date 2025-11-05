@@ -440,28 +440,36 @@ function draw() {
         strokeWeight(2);
         text("Wow! A believer!",
             width / 2,
-            height / 2 - 150);
+            height / 2 - 220);
         //Mission text
         textSize(20);
         noStroke();
         text("Your mission is to protect the castle\n" +
-            "from all the flies that infesting the area.\n" +
+            "from all the flies that are infesting the area.\n" +
+            "Eat 100 blue flies and your mission is complete fellow believer!\n" +
             "\n" +
-            "Eat as much blue flies are you can, and\n" +
-            "avoid the black flies, as they are poisonous.\n" +
+            "However, you want to avoid the black flies, as they are poisonous..\n" +
+            "Every 5 black flies eaten, one majesty will lose their trust in you.\n" +
+            "Eat 15 black flies, you will lose all of their trust and die!\n" +
             "\n" +
-            "Don't worry. Sometimes, little fairies rapidly pass through\n" +
-            "the screen in the hopes that you don't see them. Eat\n" +
-            "them to regain a little bit of life back. Or don't.\n",
+            "The King, the Queen and the Princess believe in you!\n" +
+            "They are represented by the three little crowns on the bottom right.\n" +
+            "\n" +
+            "Don't worry! Sometimes, fairies pass through the screen.\n" +
+            "They are filled with power and will help you regain the family's trust,\n" +
+            "one by one. They are really fast and small, so be alert!",
             width / 2,
-            height / 1.8);
+            height / 2.2);
         //OK button
-        fill("#6aff6a");
-        stroke(0);
-        rect(270, 400, 100, 50, 10);
-        fill(0);
+        fill(229, 202, 255);
+        stroke(255);
+        rect(245, 405, 150, 50, 10);
+        fill(47, 203, 255);
+        stroke('white')
         textSize(24);
-        text("OK", 320, 425);
+        text("Good Luck!", 320, 430);
+
+        //270,100
 
         return;
     }
@@ -648,7 +656,7 @@ function draw() {
             "𝓣𝓱𝓮 𝓾𝓷𝓲𝓬𝓸𝓻𝓷𝓼 𝓪𝓻𝓮 𝓼𝓸 𝓹𝓻𝓸𝓾𝓭 𝓸𝓯 𝔂𝓸𝓾!", 320, 260);
     }
     //When all the crowns are gone, the game is lost
-    if (deadEaten >= 3) {
+    if (deadEaten >= 15) {
         noLoop();
 
         imageMode(CENTER);
