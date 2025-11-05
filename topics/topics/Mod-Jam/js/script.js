@@ -150,8 +150,13 @@ function drawHealth() {
     colorMode(RGB, 255); // Reset color mode for other drawing
 
     //Unicorn on the left of the health bar
-    imageMode(CENTER);
-    image(healthyUnicorn, 40, 20, 60, 60);
+    // imageMode(CENTER);
+    // image(healthyUnicorn, 40, 20, 60, 60);
+
+    //Draw unicorn on the left of the health bar
+    push();
+    image(healthyUnicorn, 20, -2, 60, 60);
+    pop();
 }
 
 let gameStarted = false;
@@ -491,8 +496,13 @@ function draw() {
     //Draw the rainbow gif
     push();
     rotate(190);
-    image(rainbow, 150, -100);
+    image(rainbow, -100, -400);
     pop();
+
+    // //Draw the healthy unicorn gif
+    // push();
+    // image(healthyUnicorn, 40, 20, 60, 60);
+    // pop();
 
     /**
     *Mountain in the back
@@ -680,6 +690,6 @@ function draw() {
 function preload() {
     rainbow = loadImage("assets/images/rainbow.gif");
     deadUnicorn = loadImage("assets/images/deadunicorn.png")
-    healthyUnicorn = loadImage("assets/images/healthyunicorn.png")
+    healthyUnicorn = loadImage("assets/images/healthyunicorn.gif")
 
 }
