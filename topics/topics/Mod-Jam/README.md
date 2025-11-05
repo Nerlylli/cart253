@@ -1,4 +1,4 @@
-# MOD JAM - Unicorn saves the palaca
+# MOD JAM - Unicorn saves the palace
 
 NERLY CADET
 
