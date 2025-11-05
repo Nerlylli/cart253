@@ -487,7 +487,7 @@ function draw() {
     //Draw the rainbow gif
     push();
     rotate(190);
-    image(rainbow, -50, -400);
+    image(rainbow, 150, -100);
     pop();
 
     /**
