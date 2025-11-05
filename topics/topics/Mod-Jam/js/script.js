@@ -681,6 +681,6 @@ function draw() {
 function preload() {
     rainbow = loadImage("assets/images/rainbow.gif");
     deadUnicorn = loadImage("assets/images/deadunicorn.png")
-    healthyUnicorn = loadImage("assets/images/healthyunicorn.gif")
+    healthyUnicorn = loadImage("assets/images/healthunicorn.gif")
 
 }
