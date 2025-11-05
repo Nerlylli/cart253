@@ -444,30 +444,31 @@ function draw() {
         //Mission text
         textSize(20);
         noStroke();
-        text("Your mission is to protect the castle from all the flies that are\n" +
-            "infesting the area. Your score is recorded on the top left.\n" +
-            "Eat 100 blue flies and your mission is complete fellow believer!\n" +
+        text("Oh no! King Haggard of the Sea Castle has sent a bunch of flies to the \n" +
+            "Dream Castle to capture all the unicorn that are hiding. Your mission\n" +
+            "is to protect those who can't protect themselves. In fact, you ARE\n" +
+            "the most powerful unicorn there is!\n" +
+            "The King, the Queen and the Princess of Dream Castle believe in you!\n" +
+            "They will be represented by the three little crowns on the bottom right.\n" +
             "\n" +
+            "INSTRUCTIONS\n" +
+            "Eat 100 blue flies and your mission is complete fellow believer!\n" +
             "However, you want to avoid the black flies, as they are poisonous..\n" +
             "Every 5 black flies eaten, one majesty will lose their trust in you.\n" +
             "Eat 15 black flies, you will lose all of their trust and die!\n" +
-            "\n" +
-            "The King, the Queen and the Princess believe in you!\n" +
-            "They are represented by the three little crowns on the bottom right.\n" +
-            "\n" +
-            "Don't worry! Sometimes, fairies pass through the screen.\n" +
-            "They are filled with power and will help you regain the family's trust,\n" +
-            "one by one. They are really fast and small, so be alert!",
+            "Don't worry! Sometimes, fairies pass through the screen. They are\n" +
+            "filled with power and will help you regain the family's trust one by one.\n" +
+            "They are really fast and small, so be alert!\n",
             width / 2,
-            height / 2.2);
+            height / 2);
         //OK button
         fill(229, 202, 255);
         stroke(255);
-        rect(245, 405, 150, 50, 10);
+        rect(245, 420, 150, 50, 10);
         fill(47, 203, 255);
         stroke('white')
         textSize(24);
-        text("Good Luck!", 320, 430);
+        text("Good Luck!", 320, 445);
 
         //270,100
 
