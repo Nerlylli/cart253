@@ -2,7 +2,7 @@
 
 NERLY CADET
 
-[View this project online](s://nerlylli.github.io/cart253/topics/topics/Mod-Jam/)
+[View this project online](https://nerlylli.github.io/cart253/topics/topics/Mod-Jam/)
 
 ## Description
 
