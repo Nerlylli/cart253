@@ -445,7 +445,7 @@ function draw() {
         textSize(20);
         noStroke();
         text("Oh no! King Haggard of the Sea Castle has sent a bunch of flies to the \n" +
-            "Dream Castle to capture all the unicorn that are hiding. Your mission\n" +
+            "Dream Castle to capture all the unicorns that are hiding. Your mission\n" +
             "is to protect those who can't protect themselves. In fact, you ARE\n" +
             "the most powerful unicorn there is!\n" +
             "The King, the Queen and the Princess of Dream Castle believe in you!\n" +
