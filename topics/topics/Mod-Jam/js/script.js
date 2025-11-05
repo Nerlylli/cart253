@@ -14,6 +14,10 @@
  */
 "use strict"
 //checks how many deadly flies have been eaten
+/*Inspired by P5 "Health Bar" Code by Manno*/
+var health = 50;
+var maxHealth = 400;
+
 let score = 0;
 
 let deadEaten = 0;
@@ -21,6 +25,8 @@ let deadEaten = 0;
 let rainbow;
 
 let deadUnicorn;
+
+let healthyUnicorn;
 
 let showInstructions = false;
 
@@ -121,6 +127,36 @@ function drawMountains() {
     ellipse(650, 560, 600, 370); //In-between middle and far right
     fill(35, 144, 79);
     ellipse(30, 510, 450, 350); //Far Left
+}
+
+function drawHealth() {
+    health = map(score, 0, 100, 0, maxHealth);
+    let barWidth = map(health, 0, maxHealth, 0, 400);
+
+    //The actual bar
+    stroke(255, 142, 255);
+    strokeWeight(4);
+    noFill();
+    rect(40, 10, 400, 20);
+    /**
+     *The fill
+     */
+    noStroke();
+    fill('red');
+    colorMode(HSB, 360, 100, 100);
+
+    //Rainbow colors
+    for (let i = 0; i < barWidth; i++) {
+        let hue = map(i, 0, 400, 0, 360);
+        fill(hue, 100, 100);
+        rect(40 + i, 10, 1, 20);
+    }
+
+    colorMode(RGB, 255); // Reset color mode for other drawing
+
+    //Unicorn on the left of the health bar
+    imageMode(CENTER);
+    image(healthyUnicorn, 40, 20, 60, 60);
 }
 
 let gameStarted = false;
@@ -274,7 +310,7 @@ function drawLife(life) {
  */
 function resetFly(fly) {
     fly.x = 0;
-    fly.y = random(0, 300);
+    fly.y = random(40, 300);
 }
 
 /**
@@ -282,7 +318,7 @@ function resetFly(fly) {
  */
 function resetDead(dead) {
     dead.x = 0;
-    dead.y = random(0, 300);
+    dead.y = random(40, 300);
 }
 
 /**
@@ -323,9 +359,11 @@ function moveUnicorn() {
 }
 
 function drawUnicorn() {
+    push();
     textSize(unicorn.size);
     textAlign(CENTER, CENTER);
     text("🦄", unicorn.x, unicorn.y);
+    pop();
 }
 
 function checkFlyEaten(fly) {
@@ -583,12 +621,9 @@ function draw() {
     if (deadEaten < 10) drawCrown(540, 450, 40); // Second crown
     if (deadEaten < 15) drawCrown(600, 450, 40); // Third crown
 
-    //Display score
-    push();
-    fill(255);
-    textSize(100);
-    text(score, 300, 350);
-    pop();
+
+    //Draws the health bar
+    drawHealth();
 
     //The Unicorn
     moveUnicorn();
@@ -639,5 +674,6 @@ function draw() {
 function preload() {
     rainbow = loadImage("assets/images/rainbow.gif");
     deadUnicorn = loadImage("assets/images/deadunicorn.png")
+    healthyUnicorn = loadImage("assets/images/healthyunicorn.png")
 
 }
