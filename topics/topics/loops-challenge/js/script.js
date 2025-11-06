@@ -22,6 +22,8 @@
  */
 function setup() {
     createCanvas(500, 500);
+
+    colorMode(HSB);
 }
 
 /**
@@ -29,7 +31,25 @@ function setup() {
  * gradually lightening colour
  */
 function draw() {
-    background("pink");
+    background(0);
+
+    let x1b = 0;
+    let x2b = 0;
+    let y1b = 0;
+    let y2b = height;
+    let lineHue = 0;
+    let thickness3 = 1;
+
+    while (x1b <= width) {
+        stroke(lineHue, 100, 100);
+        strokeWeight(thickness3);
+        line(x1b, y1b, x2b, y2b);
+
+        x1b += 5;
+        x2b += 5;
+        lineHue = map(x1b, 0, width, 0, 360);
+    }
+
 
     let x1 = 0;
     let x2 = 0;
@@ -57,7 +77,7 @@ function draw() {
     let thickness2 = 10;
 
     while (y1h <= height) {
-        stroke(strokeColor);
+        stroke(strokeColor2);
         strokeWeight(thickness2);
         line(x1h, y1h, x2h, y2h);
 
