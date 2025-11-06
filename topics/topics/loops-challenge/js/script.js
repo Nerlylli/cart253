@@ -33,6 +33,8 @@ function setup() {
 function draw() {
     background(0);
 
+    //Step 4
+    // lines variables for background
     let x1b = 0;
     let x2b = 0;
     let y1b = 0;
@@ -40,6 +42,7 @@ function draw() {
     let lineHue = 0;
     let thickness3 = 1;
 
+    // loops for lines in the background
     while (x1b <= width) {
         stroke(lineHue, 100, 100);
         strokeWeight(thickness3);
@@ -47,10 +50,10 @@ function draw() {
 
         x1b += 5;
         x2b += 5;
-        lineHue = map(x1b, 0, width, 0, 360);
+        lineHue = map(x1b, 0, width, 0, 360); // gradient
     }
-
-
+    //step 2
+    // vertical lines variables
     let x1 = 0;
     let x2 = 0;
     let y1 = 0;
@@ -58,6 +61,7 @@ function draw() {
     let strokeColor = 0;
     let thickness = 1;
 
+    //loops for vertical lines
     while (x1 <= width) {
         stroke(strokeColor);
         strokeWeight(thickness);
@@ -65,10 +69,11 @@ function draw() {
 
         x1 += 50;
         x2 += 50;
-        strokeColor += 10;
-        thickness += 3;
+        strokeColor += 10; // color goes from black to white
+        thickness += 3; // strokeweight increases
     }
-
+    //step 3
+    // horizontal lines variables
     let x1h = 0;
     let x2h = width;
     let y1h = 0;
@@ -76,6 +81,7 @@ function draw() {
     let strokeColor2 = 220;
     let thickness2 = 10;
 
+    // loops for horizontal lines
     while (y1h <= height) {
         stroke(strokeColor2);
         strokeWeight(thickness2);
@@ -83,7 +89,7 @@ function draw() {
 
         y1h += 50;
         y2h += 50;
-        strokeColor2 -= 30;
-        thickness2 += 3;
+        strokeColor2 -= 30; // color goes from white to black
+        thickness2 += 3; // strokeweight increases
     }
 }
