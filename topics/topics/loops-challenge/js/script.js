@@ -48,4 +48,22 @@ function draw() {
         strokeColor += 10;
         thickness += 3;
     }
+
+    let x1h = 0;
+    let x2h = width;
+    let y1h = 0;
+    let y2h = 0;
+    let strokeColor2 = 220;
+    let thickness2 = 10;
+
+    while (y1h <= height) {
+        stroke(strokeColor);
+        strokeWeight(thickness2);
+        line(x1h, y1h, x2h, y2h);
+
+        y1h += 50;
+        y2h += 50;
+        strokeColor2 -= 30;
+        thickness2 += 3;
+    }
 }
