@@ -1,13 +1,36 @@
-// 1. Press Play at the top
-// 2. Click on dark grey canvas (before snake hit the wall)
-// 3. Use key arrows to move snake
+/**
+ * Variation Jam
+ * Nerly Cadet
+ * 
+ * DESCRIPTION OF CODE
+ * 
+ * WHAT TO ADD
+ * Add another rect. to represent the bull (villain)
+    * Goal: to avoid touching the bull with the snake
+ * Game is lost when corners are touched by snake
+    * X(0,600)
+    * Y(0,480)
+ * 
+ * VARATIONS
+ * 1. Redemption when ModJam is lost
+ * 2. 
+ * 3.
+ * 
+ * HOW TO PLAY
+ * 1. Press Play at the top
+ * 2. Click on dark grey canvas (before snake hit the wall)
+ * 3. Use key arrows to move snake
+ */
+
+
+let score = 0;
 
 var s;
 var scl = 20;
 var food;
 
 function setup() {
-    createCanvas(600, 600);
+    createCanvas(640, 480);
     s = new Snake();
     frameRate(10);
     food = createVector(random(width), random(height));
@@ -21,27 +44,30 @@ function pickLocation() {
     var rows = floor(height / scl);
     food = createVector(floor(random(cols)), floor(random(rows)));//this ensure the food is in the grid aligned with snake
     food.mult(scl);//to expand it back out
-
-
 }
 
 function draw() {
-    background(51);
+    background(153, 1, 72);
 
     //if snake eat food, pick location
     if (s.eat(food)) {
         pickLocation();
     }
-    s.death();
+    // s.death();
     s.update();
     s.show();
 
     //drawing snake food
-    fill(255, 0, 100);
+    push();
+    stroke(random(255), random(0, 230), random(43, 234));
+    fill(random(255), random(0, 230), random(43, 234));
     rect(food.x, food.y, scl, scl);
+    pop();
+
 
 }
 
+//When pressing on the keyboard arrows
 function keyPressed() {
     if (keyCode === UP_ARROW) {
         s.dir(0, -1); //moves 0 along x and -1 (up) along y axis
@@ -82,19 +108,6 @@ function Snake() {
         this.yspeed = y;
     }
 
-    //function to kill the snake when it touches its own body
-    this.death = function () {
-        for (var i = 0; i < this.tail.length; i++) {//loop throught every spot in the tail (not inc. head)
-            var pos = this.tail[i];
-            var d = dist(this.x, this.y, pos.x, pos.y);
-            if (d < 1) {
-                this.total = 0;
-                this.tail = [];
-            }
-        }
-    }
-
-
     //function that updates object's moves based on current lcoation + speed.   
     this.update = function () {
 
@@ -111,19 +124,27 @@ function Snake() {
         this.y = this.y + this.yspeed * scl;
 
         //to constrain snake getting off the grid
-        this.x = constrain(this.x, 0, width - scl);
-        this.x = constrain(this.x, 0, height - scl);
+        this.x = constrain(this.x, 0, 620);
+        this.y = constrain(this.y, 0, 460);
     }
 
     this.show = function () {
-        fill(255);
-        //draw the tail on current location
+        //food
+
+        stroke(random(255), random(0, 230), random(43, 234));
+        fill(random(255), random(0, 230), random(43, 234));
+
+
+        //draw the tails when food is eaten
         for (var i = 0; i < this.tail.length; i++) {
             rect(this.tail[i].x, this.tail[i].y, scl, scl);
         }
 
-        //draw the food on current location
-        fill(255);
+        //the snake
+        push();
+        noStroke();
+        fill(255, 179, 248);
         rect(this.x, this.y, scl, scl);
+        pop();
     }
 }  
