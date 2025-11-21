@@ -22,18 +22,14 @@
  * 3. Use key arrows to move snake
  */
 
-
+let scl = 20; //size of snake and food
 let score = 0;
-
-var s;
-var scl = 20;
-var food;
+let s = new Snake();
+let food;
 
 function setup() {
     createCanvas(640, 480);
-    s = new Snake();
     frameRate(10);
-    food = createVector(random(width), random(height));
     pickLocation();
 }
 
@@ -63,8 +59,6 @@ function draw() {
     fill(random(255), random(0, 230), random(43, 234));
     rect(food.x, food.y, scl, scl);
     pop();
-
-
 }
 
 //When pressing on the keyboard arrows
