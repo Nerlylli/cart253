@@ -8,8 +8,9 @@
  * Add another rect. to represent the bull (villain)
     * Goal: to avoid touching the bull with the snake
  * Game is lost when corners are touched by snake
-    * X(0,600)
-    * Y(0,480)
+    * X(0,620)
+    * Y(0,460)
+ * A score
  * 
  * VARATIONS
  * 1. Redemption when ModJam is lost
@@ -59,6 +60,15 @@ function draw() {
     fill(random(255), random(0, 230), random(43, 234));
     rect(food.x, food.y, scl, scl);
     pop();
+
+    drawScore();
+
+}
+
+function drawScore() {
+    textSize(20);
+    fill(255);
+    text("Score\n" + score, 10, 30);
 }
 
 //When pressing on the keyboard arrows
@@ -90,6 +100,7 @@ function Snake() {
         //tells me wheter or not the snake reaches the food
         if (d < 1) {
             this.total++;//if snake eats the food, total goes up to one
+            score += 1;
             return true;
         } else {
             return false;
@@ -118,6 +129,7 @@ function Snake() {
         this.y = this.y + this.yspeed * scl;
 
         //to constrain snake getting off the grid
+        //When snake touches this, it dies
         this.x = constrain(this.x, 0, 620);
         this.y = constrain(this.y, 0, 460);
     }
