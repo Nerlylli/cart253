@@ -1,12 +1,25 @@
 /**
- * This file contains the code to run *only* the red variation part of the program.
- * Note how it has its own draw, redDraw(), and its own keyPressed, redKeyPressed().
- * This keeps the stuff the menu needs to do *separate* from the rest of the program.
+ * Variation Jam
+ * Nerly Cadet
+ * 
+ * DESCRIPTION OF CODE
+ * 
+ * WHAT TO ADD
+ * When player dies, message with buttons
+    *Play again
+    *Change Variations
+ * 
+ * VARATIONS
+ * 1. Normal versiom
+ * 2. Avoid the "color" snake
+ * 3. The "color" snake is following you
+ * 
+ * HOW TO PLAY
+ * 1. Press Play at the top
+ * 2. Click on dark grey canvas (before snake hit the wall)
+ * 3. Use key arrows to move snake
  */
 
-/**
- * This will be called just before the red variation starts
- */
 
 let scl = 20; //size of snake and food
 let score = 0;

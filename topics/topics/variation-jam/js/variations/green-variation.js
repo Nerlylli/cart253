@@ -1,4 +1,5 @@
 /**
+ * This file contains the code to run *only* the green variation part of the program.
  * Note how it has its own draw, greenDraw(), and its own keyPressed, greenKeyPressed().
  * This keeps the stuff the menu needs to do *separate* from the rest of the program.
  */
