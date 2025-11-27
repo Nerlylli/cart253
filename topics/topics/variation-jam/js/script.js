@@ -5,17 +5,14 @@
  * DESCRIPTION OF CODE
  * 
  * WHAT TO ADD
- * Add another rect. to represent the bull (villain)
-    * Goal: to avoid touching the bull with the snake
- * Game is lost when corners are touched by snake
-    * X(0,620)
-    * Y(0,460)
- * A score
+ * When player dies, message with buttons
+    *Play again
+    *Change Variations
  * 
  * VARATIONS
- * 1. Redemption when ModJam is lost
- * 2. 
- * 3.
+ * 1. Normal versiom
+ * 2. Avoid the "color" snake
+ * 3. The "color" snake is following you
  * 
  * HOW TO PLAY
  * 1. Press Play at the top
@@ -128,8 +125,41 @@ function Snake() {
         this.x = this.x + this.xspeed * scl;
         this.y = this.y + this.yspeed * scl;
 
+        //When snake touches the corners, players dies
+        if (this.x < 0) {
+            noLoop();
+            //Winning message
+            textSize(30);
+            stroke(0, 200, 255)
+            fill('pink');
+            text("You lost", 270, 250);
+        }
+        if (this.x > 620) {
+            noLoop();
+            //Winning message
+            textSize(30);
+            stroke(0, 200, 255)
+            fill('pink');
+            text("You lost", 270, 250);
+        }
+        if (this.y < 0) {
+            noLoop();
+            //Winning message
+            textSize(30);
+            stroke(0, 200, 255)
+            fill('pink');
+            text("You lost", 270, 250);
+        }
+        if (this.y > 460) {
+            noLoop();
+            //Winning message
+            textSize(30);
+            stroke(0, 200, 255)
+            fill('pink');
+            text("You lost", 270, 250);
+        }
+
         //to constrain snake getting off the grid
-        //When snake touches this, it dies
         this.x = constrain(this.x, 0, 620);
         this.y = constrain(this.y, 0, 460);
     }
