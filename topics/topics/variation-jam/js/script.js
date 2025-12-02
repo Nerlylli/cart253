@@ -31,10 +31,10 @@ function draw() {
             easyDraw();
             break
         case "medium-variation":
-            greenDraw();
+            mediumDraw();
             break;
         case "hard-variation":
-            blueDraw();
+            hardDraw();
             break;
     }
 }
@@ -52,10 +52,10 @@ function mousePressed() {
             easyMousePressed();
             break
         case "medium-variation":
-            greenMousePressed();
+            mediumMousePressed();
             break;
         case "hard-variation":
-            blueMousePressed();
+            hardMousePressed();
             break;
     }
 }
@@ -73,10 +73,10 @@ function keyPressed(event) {
             easyKeyPressed(event);
             break
         case "medium-variation":
-            greenKeyPressed(event);
+            mediumKeyPressed(event);
             break;
         case "hard-variation":
-            blueKeyPressed(event);
+            hardKeyPressed(event);
             break;
     }
 }

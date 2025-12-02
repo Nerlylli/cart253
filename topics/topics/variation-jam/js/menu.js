@@ -39,12 +39,12 @@ function menuKeyPressed(event) {
 
         case 77:
             state = "medium-variation";
-            greenSetup();
+            mediumSetup();
             break;
 
         case 72:
             state = "hard-variation";
-            blueSetup();
+            hardSetup();
             break;
     }
 }
