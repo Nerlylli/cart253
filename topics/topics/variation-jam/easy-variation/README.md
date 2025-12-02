@@ -1,6 +1,6 @@
-# Variation Jam
+# TITLE OF PROJECT
 
-Nerly Cadet
+AUTHOR NAME
 
 [View this project online](URL_FOR_THE_RUNNING_PROJECT)
 
