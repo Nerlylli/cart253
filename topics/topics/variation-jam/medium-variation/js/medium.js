@@ -82,6 +82,7 @@ function draw() {
     //drawing the villain
     push();
     fill('black');
+    noStroke();
     rect(villain.x, villain.y, scl, scl);
     pop();
 
@@ -145,25 +146,27 @@ function drawInstructions() {
 
     fill(255, 105, 180);
     textSize(32);
-    text("SNAKE GAME", 212, 50);
-    text("Level Easy", height / 2, 80);
+    text("SNAKE GAME", 231, 50);
+    text("Level Medium", height / 2, 80);
 
     fill(255);
     textSize(20);
     text("HOW TO PLAY:", 20, 125);
-    text("The goal is to gather 50 other snakes\n" +
+    text("The goal is to gather 50 other snakes.\n" +
         "\n" +
         "Use the ➝ to go right\n" +
         "Use the ← to go left\n" +
         "Use the ↑ to go up, and\n" +
         "Use the ↓ to go down.\n" +
         "\n" +
-        "Avoid hitting the corners, because you will lose",
+        "Avoid hitting the corners, because you will lose.\n" +
+        "Also, avoid touching the black snakes, as they are\n" +
+        "poisonous and will kill you.",
         20, 150);
 
     fill(255, 105, 180);
     textSize(24);
-    text("Press SPACE to start", 200, 400);
+    text("Press SPACE to start", 200, 420);
 }
 
 //function to create snake object, with location and speed
