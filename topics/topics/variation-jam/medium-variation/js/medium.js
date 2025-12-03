@@ -9,15 +9,16 @@
     *Play again
     *Change Variations
  * 
- * VARATIONS
- * 1. Normal versiom
- * 2. Avoid the "color" snake
- * 3. The "color" snake is following you
+ * VARATION
+ * Medium: Avoid the black snake. 
  * 
  * HOW TO PLAY
- * 1. Press Play at the top
- * 2. Click on dark grey canvas (before snake hit the wall)
- * 3. Use key arrows to move snake
+ * 1. Read the instructions
+ * 2. Press Space to start
+ * 3. Use key arrows to move the snake
+ * 4. Avoid the corners. It will make you lose the game.
+ * 5. Avoid the black snake. It is the villain, and it will make you lose the game
+ * 6. Gather 50 food, and win.
  */
 
 "use strict";
@@ -28,14 +29,16 @@ let s = new Snake();
 let food;
 let showInstructions = true;
 let gameOver = true;
+//Variation Addition
+let villain;
 
 
 /**SETS UP THE CANVAS */
 function setup() {
     createCanvas(640, 480);
     frameRate(10);
-    pickLocation();
-
+    pickLocation(); //location of the food
+    pickVillainLocation(); //location of the villain
 }
 
 //function to store snake's location on the grid
@@ -47,6 +50,15 @@ function pickLocation() {
     food.mult(scl);//to expand it back out
 }
 
+
+//function to store the villain's location on the grid
+function pickVillainLocation() {
+    var cols = floor(width / scl);
+    var rows = floor(height / scl);
+    villain = createVector(floor(random(cols)), floor(random(rows)));
+    villain.mult(scl);
+}
+
 /** DRAWS THE GAME */
 function draw() {
     background(153, 1, 72);
@@ -54,6 +66,7 @@ function draw() {
     //if snake eat food, pick location
     if (s.eat(food)) {
         pickLocation();
+        pickVillainLocation(); //everytime the food gets eaten, the position of the villain changes as well
     }
     // s.death();
     s.update();
@@ -64,6 +77,12 @@ function draw() {
     stroke(random(255), random(0, 230), random(43, 234));
     fill(random(255), random(0, 230), random(43, 234));
     rect(food.x, food.y, scl, scl);
+    pop();
+
+    //drawing the villain
+    push();
+    fill('black');
+    rect(villain.x, villain.y, scl, scl);
     pop();
 
     drawScore();
@@ -91,12 +110,13 @@ function keyPressed(event) {
 
     switch (keyCode) {
         case 82: // R key
-            if (gameOver) { // only restart if the player is dead
+            if (gameOver) { //restarts once the player is dead
                 score = 0;
                 s = new Snake();
                 pickLocation();
+                pickVillainLocation();
                 gameOver = false;
-                loop(); // resume draw loop
+                loop();
             }
             break;
     }
@@ -117,7 +137,7 @@ function restartGame() {
     s = new Snake();
     pickLocation();
     showInstructions = false;
-    loop();  // resume p5 draw loop
+    loop();
 }
 
 function drawInstructions() {
@@ -268,6 +288,25 @@ function Snake() {
             pop();
         }
 
+        if (dist(this.x, this.y, villain.x, villain.y) < 1) {
+            noLoop();
+            gameOver = true;
+            //Losing message
+            background(255);
+            textSize(30);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
+        }
+
 
         //to constrain snake getting off the grid
         this.x = constrain(this.x, 0, 620);
@@ -283,7 +322,6 @@ function Snake() {
 
             stroke(random(255), random(0, 230), random(43, 234));
             fill(random(255), random(0, 230), random(43, 234));
-
 
             //draw the tails when food is eaten
             for (var i = 0; i < this.tail.length; i++) {
@@ -303,7 +341,7 @@ function mousePressed() {
     //Instructions button
     if (showInstructions) {
 
-        // Try Again button (same numbers as your rect)
+        // Try Again button
         if (mouseX > 232.5 && mouseX < 357.5 &&
             mouseY > 325 && mouseY < 375) {
 
@@ -312,7 +350,7 @@ function mousePressed() {
             s = new Snake();
             pickLocation();
             showInstructions = false;
-            loop(); // resume draw loop
+            loop();
             return;
         }
     }
