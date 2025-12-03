@@ -27,6 +27,7 @@ let score = 0;
 let s = new Snake();
 let food;
 let showInstructions = true;
+let gameOver = true;
 
 /**SETS UP THE CANVAS */
 function setup() {
@@ -47,6 +48,8 @@ function pickLocation() {
 /**DRAWS THE BACKGROUND */
 function draw() {
     background(153, 1, 72);
+
+
 
     //if snake eat food, pick location
     if (s.eat(food)) {
@@ -88,6 +91,17 @@ function keyPressed() {
         return;
     }
 
+    switch (keyCode) {
+        case 82: // R key
+            if (gameOver) { // only restart if the player is dead
+                score = 0;
+                s = new Snake();
+                pickLocation();
+                gameOver = false;
+                loop(); // resume draw loop
+            }
+            break;
+    }
 
     if (keyCode === UP_ARROW) {
         s.dir(0, -1); //moves 0 along x and -1 (up) along y axis
@@ -100,6 +114,15 @@ function keyPressed() {
     }
 
 }
+
+function restartGame() {
+    score = 0;
+    s = new Snake();
+    pickLocation();
+    showInstructions = false;
+    loop();  // resume p5 draw loop
+}
+
 
 function drawInstructions() {
     background('pink');
@@ -175,35 +198,80 @@ function Snake() {
         //When snake touches the corners, players dies
         if (this.x < 0) {
             noLoop();
+            gameOver = true;
+
             //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.x > 620) {
             noLoop();
+            gameOver = true;
             //Losing message
+            background(255);
             textSize(30);
             stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.y < 0) {
             noLoop();
+            gameOver = true;
             //Losing message
+            background(255);
             textSize(30);
             stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.y > 460) {
             noLoop();
+            gameOver = true;
             //Losing message
+            background(255);
             textSize(30);
             stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
 
         //to constrain snake getting off the grid
@@ -250,6 +318,18 @@ function Snake() {
 function mousePressed() {
     //Instructions button
     if (showInstructions) {
-        showInstructions = false;
+
+        // Try Again button (same numbers as your rect)
+        if (mouseX > 232.5 && mouseX < 357.5 &&
+            mouseY > 325 && mouseY < 375) {
+
+            // Restart:
+            score = 0;
+            s = new Snake();
+            pickLocation();
+            showInstructions = false;
+            loop(); // resume draw loop
+            return;
+        }
     }
 }
