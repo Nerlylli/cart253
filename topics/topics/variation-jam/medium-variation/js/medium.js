@@ -2,13 +2,6 @@
  * Variation Jam
  * Nerly Cadet
  * 
- * DESCRIPTION OF CODE
- * 
- * WHAT TO ADD
- * When player dies, message with buttons
-    *Play again
-    *Change Variations
- * 
  * VARATION
  * Medium: Avoid the black snake. 
  * 
