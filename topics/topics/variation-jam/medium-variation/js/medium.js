@@ -26,6 +26,8 @@ let scl = 20; //size of snake and food
 let score = 0;
 let s = new Snake();
 let food;
+let showInstructions = true;
+let gameOver = true;
 
 
 /**SETS UP THE CANVAS */
@@ -65,6 +67,11 @@ function draw() {
     pop();
 
     drawScore();
+
+    if (showInstructions) {
+        drawInstructions();
+        return;
+    }
 }
 
 function drawScore() {
@@ -77,8 +84,21 @@ function drawScore() {
  * This will be called whenever a key is pressed while the red variation is active
  */
 function keyPressed(event) {
-    if (event.keyCode === 27) {
-        state = "menu";
+    if (showInstructions && key === " ") {
+        showInstructions = false;
+        return;
+    }
+
+    switch (keyCode) {
+        case 82: // R key
+            if (gameOver) { // only restart if the player is dead
+                score = 0;
+                s = new Snake();
+                pickLocation();
+                gameOver = false;
+                loop(); // resume draw loop
+            }
+            break;
     }
 
     if (keyCode === UP_ARROW) {
@@ -90,6 +110,40 @@ function keyPressed(event) {
     } else if (keyCode === LEFT_ARROW) {
         s.dir(-1, 0);
     }
+}
+
+function restartGame() {
+    score = 0;
+    s = new Snake();
+    pickLocation();
+    showInstructions = false;
+    loop();  // resume p5 draw loop
+}
+
+function drawInstructions() {
+    background('pink');
+
+    fill(255, 105, 180);
+    textSize(32);
+    text("SNAKE GAME", 212, 50);
+    text("Level Easy", height / 2, 80);
+
+    fill(255);
+    textSize(20);
+    text("HOW TO PLAY:", 20, 125);
+    text("The goal is to gather 50 other snakes\n" +
+        "\n" +
+        "Use the ➝ to go right\n" +
+        "Use the ← to go left\n" +
+        "Use the ↑ to go up, and\n" +
+        "Use the ↓ to go down.\n" +
+        "\n" +
+        "Avoid hitting the corners, because you will lose",
+        20, 150);
+
+    fill(255, 105, 180);
+    textSize(24);
+    text("Press SPACE to start", 200, 400);
 }
 
 //function to create snake object, with location and speed
@@ -139,59 +193,127 @@ function Snake() {
         //When snake touches the corners, players dies
         if (this.x < 0) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.x > 620) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.y < 0) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.y > 460) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
+
 
         //to constrain snake getting off the grid
         this.x = constrain(this.x, 0, 620);
         this.y = constrain(this.y, 0, 460);
-    }
 
-    this.show = function () {
-        //food
-
-        stroke(random(255), random(0, 230), random(43, 234));
-        fill(random(255), random(0, 230), random(43, 234));
-
-
-        //draw the tails when food is eaten
-        for (var i = 0; i < this.tail.length; i++) {
-            rect(this.tail[i].x, this.tail[i].y, scl, scl);
+        //To win the game, needs to eat at least 100 blue flies
+        if (score >= 50) {
+            noLoop();
         }
 
-        //the snake
-        push();
-        noStroke();
-        fill(255, 179, 248);
-        rect(this.x, this.y, scl, scl);
-        pop();
+        this.show = function () {
+            //food
+
+            stroke(random(255), random(0, 230), random(43, 234));
+            fill(random(255), random(0, 230), random(43, 234));
+
+
+            //draw the tails when food is eaten
+            for (var i = 0; i < this.tail.length; i++) {
+                rect(this.tail[i].x, this.tail[i].y, scl, scl);
+            }
+
+            //the snake
+            push();
+            noStroke();
+            fill(255, 179, 248);
+            rect(this.x, this.y, scl, scl);
+            pop();
+        }
+    }
+}
+function mousePressed() {
+    //Instructions button
+    if (showInstructions) {
+
+        // Try Again button (same numbers as your rect)
+        if (mouseX > 232.5 && mouseX < 357.5 &&
+            mouseY > 325 && mouseY < 375) {
+
+            // Restart:
+            score = 0;
+            s = new Snake();
+            pickLocation();
+            showInstructions = false;
+            loop(); // resume draw loop
+            return;
+        }
     }
 }
