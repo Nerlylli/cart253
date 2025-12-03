@@ -26,6 +26,7 @@ let scl = 20; //size of snake and food
 let score = 0;
 let s = new Snake();
 let food;
+let showInstructions = true;
 
 /**SETS UP THE CANVAS */
 function setup() {
@@ -63,6 +64,11 @@ function draw() {
     pop();
 
     drawScore();
+
+    if (showInstructions) {
+        drawInstructions();
+        return;
+    }
 }
 
 function drawScore() {
@@ -75,6 +81,14 @@ function drawScore() {
  * This will be called whenever a key is pressed while the red variation is active
  */
 function keyPressed() {
+
+    //The instructions before the game starts
+    if (showInstructions && key === " ") {
+        showInstructions = false;
+        return;
+    }
+
+
     if (keyCode === UP_ARROW) {
         s.dir(0, -1); //moves 0 along x and -1 (up) along y axis
     } else if (keyCode === DOWN_ARROW) {
@@ -84,7 +98,35 @@ function keyPressed() {
     } else if (keyCode === LEFT_ARROW) {
         s.dir(-1, 0);
     }
+
 }
+
+function drawInstructions() {
+    background('pink');
+
+    fill(255, 105, 180);
+    textSize(32);
+    text("SNAKE GAME", 212, 50);
+    text("Level Easy", height / 2, 80);
+
+    fill(255);
+    textSize(20);
+    text("HOW TO PLAY:", 20, 125);
+    text("The goal is to gather 50 other snakes\n" +
+        "\n" +
+        "Use the ➝ to go right\n" +
+        "Use the ← to go left\n" +
+        "Use the ↑ to go up, and\n" +
+        "Use the ↓ to go down.\n" +
+        "\n" +
+        "Avoid hitting the corners, because you will lose",
+        20, 150);
+
+    fill(255, 105, 180);
+    textSize(24);
+    text("Press SPACE to start", 200, 400);
+}
+
 
 //function to create snake object, with location and speed
 function Snake() {
@@ -133,7 +175,7 @@ function Snake() {
         //When snake touches the corners, players dies
         if (this.x < 0) {
             noLoop();
-            //Winning message
+            //Losing message
             textSize(30);
             stroke(0, 200, 255)
             fill('pink');
@@ -141,7 +183,7 @@ function Snake() {
         }
         if (this.x > 620) {
             noLoop();
-            //Winning message
+            //Losing message
             textSize(30);
             stroke(0, 200, 255)
             fill('pink');
@@ -149,7 +191,7 @@ function Snake() {
         }
         if (this.y < 0) {
             noLoop();
-            //Winning message
+            //Losing message
             textSize(30);
             stroke(0, 200, 255)
             fill('pink');
@@ -157,7 +199,7 @@ function Snake() {
         }
         if (this.y > 460) {
             noLoop();
-            //Winning message
+            //Losing message
             textSize(30);
             stroke(0, 200, 255)
             fill('pink');
@@ -167,6 +209,21 @@ function Snake() {
         //to constrain snake getting off the grid
         this.x = constrain(this.x, 0, 620);
         this.y = constrain(this.y, 0, 460);
+
+        //To win the game, needs to eat at least 100 blue flies
+        if (score >= 50) {
+            noLoop();
+            // background("white");
+
+            // //Winning message
+            // textSize(30);
+            // stroke(0, 200, 255)
+            // fill('pink');
+            // text("𓃗", 320, 200);
+            // text("𝓨𝓪𝔂𝔂!!\n" +
+            //     "𝓨𝓸𝓾 𝓹𝓻𝓸𝓽𝓮𝓬𝓽𝓮𝓭 𝓽𝓱𝓮 𝓹𝓪𝓵𝓪𝓬𝓮!\n" +
+            //     "𝓣𝓱𝓮 𝓾𝓷𝓲𝓬𝓸𝓻𝓷𝓼 𝓪𝓻𝓮 𝓼𝓸 𝓹𝓻𝓸𝓾𝓭 𝓸𝓯 𝔂𝓸𝓾!", 320, 260);
+        }
     }
 
     this.show = function () {
@@ -187,5 +244,12 @@ function Snake() {
         fill(255, 179, 248);
         rect(this.x, this.y, scl, scl);
         pop();
+    }
+}
+
+function mousePressed() {
+    //Instructions button
+    if (showInstructions) {
+        showInstructions = false;
     }
 }
