@@ -315,6 +315,20 @@ function Snake() {
         //To win the game, needs to eat at least 100 blue flies
         if (score >= 50) {
             noLoop();
+            //Winning Message
+            background(255);
+            textSize(30);
+            noStroke();
+            fill(255, 105, 180);
+            text("You Won!", height / 2, 250);
+            text("Yay!", 270, 300)
+            //Play again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill(255, 105, 180);
+            text("Click on R to play again.", 295, 350);
+            pop();
         }
 
         this.show = function () {
