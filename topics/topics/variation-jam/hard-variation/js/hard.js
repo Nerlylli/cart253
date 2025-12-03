@@ -10,7 +10,8 @@
  * 2. Press Space to start
  * 3. Use key arrows to move the snake
  * 4. Avoid the corners. It will make you lose the game.
- * 5. Avoid the black snake. It is the villain, and it will make you lose the game
+ * 5. Avoid the black snake. It is following you, you cannot keep your gards down.
+ * It is the villain, if it catches you, you will lose the game.
  * 6. Gather 50 food, and win.
  */
 
@@ -23,6 +24,8 @@ let food;
 let showInstructions = true;
 let gameOver = true;
 let villain;
+//Variation Addition
+let villainSpeed = 0.5;
 
 /**SETS UP THE CANVAS */
 function setup() {
@@ -49,6 +52,23 @@ function pickVillainLocation() {
     villain.mult(scl);
 }
 
+//villain is following the snake
+function villainMove(snakeX, snakeY) {
+    //X position
+    if (villain.x < snakeX) {
+        villain.x += scl * villainSpeed;
+    } else if (villain.x > snakeX) {
+        villain.x -= scl * villainSpeed;
+    }
+
+    //Y position
+    if (villain.y < snakeY) {
+        villain.y += scl * villainSpeed;
+    } else if (villain.y > snakeY) {
+        villain.y -= scl * villainSpeed;
+    }
+}
+
 /**DRAWS THE GAME*/
 
 function draw() {
@@ -61,6 +81,8 @@ function draw() {
     // s.death();
     s.update();
     s.show();
+
+    villainMove(s.x, s.y);
 
     //drawing snake food
     push();
