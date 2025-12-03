@@ -1,9 +1,17 @@
 /**
- * Title of Project
- * Author Name
+ * Variation Jam
+ * Nerly Cadet
  * 
- * HOW EMBARRASSING! I HAVE NO DESCRIPTION OF MY PROJECT!
- * PLEASE REMOVE A GRADE FROM MY WORK IF IT'S GRADED!
+ * VARATION
+ * Medium: Avoid the black snake. 
+ * 
+ * HOW TO PLAY
+ * 1. Read the instructions
+ * 2. Press Space to start
+ * 3. Use key arrows to move the snake
+ * 4. Avoid the corners. It will make you lose the game.
+ * 5. Avoid the black snake. It is the villain, and it will make you lose the game
+ * 6. Gather 50 food, and win.
  */
 
 "use strict";
@@ -12,12 +20,16 @@ let scl = 20; //size of snake and food
 let score = 0;
 let s = new Snake();
 let food;
+let showInstructions = true;
+let gameOver = true;
+let villain;
 
 /**SETS UP THE CANVAS */
 function setup() {
     createCanvas(640, 480);
     frameRate(10);
     pickLocation();
+    pickVillainLocation(); //location of the villain
 }
 
 //function to store snake's location on the grid
@@ -29,6 +41,13 @@ function pickLocation() {
     food.mult(scl);//to expand it back out
 }
 
+//function to store the villain's location on the grid
+function pickVillainLocation() {
+    var cols = floor(width / scl);
+    var rows = floor(height / scl);
+    villain = createVector(floor(random(cols)), floor(random(rows)));
+    villain.mult(scl);
+}
 
 /**DRAWS THE GAME*/
 
@@ -50,7 +69,19 @@ function draw() {
     rect(food.x, food.y, scl, scl);
     pop();
 
+    //drawing the villain
+    push();
+    fill('black');
+    noStroke();
+    rect(villain.x, villain.y, scl, scl);
+    pop();
+
     drawScore();
+
+    if (showInstructions) {
+        drawInstructions();
+        return;
+    }
 }
 
 function drawScore() {
@@ -63,8 +94,22 @@ function drawScore() {
  * This will be called whenever a key is pressed while the red variation is active
  */
 function keyPressed(event) {
-    if (event.keyCode === 27) {
-        state = "menu";
+    if (showInstructions && key === " ") {
+        showInstructions = false;
+        return;
+    }
+
+    switch (keyCode) {
+        case 82: // R key
+            if (gameOver) { //restarts once the player is dead
+                score = 0;
+                s = new Snake();
+                pickLocation();
+                pickVillainLocation();
+                gameOver = false;
+                loop();
+            }
+            break;
     }
 
     if (keyCode === UP_ARROW) {
@@ -76,6 +121,42 @@ function keyPressed(event) {
     } else if (keyCode === LEFT_ARROW) {
         s.dir(-1, 0);
     }
+}
+
+function restartGame() {
+    score = 0;
+    s = new Snake();
+    pickLocation();
+    showInstructions = false;
+    loop();
+}
+
+function drawInstructions() {
+    background('pink');
+
+    fill(255, 105, 180);
+    textSize(32);
+    text("SNAKE GAME", 231, 50);
+    text("Level Medium", height / 2, 80);
+
+    fill(255);
+    textSize(20);
+    text("HOW TO PLAY:", 20, 125);
+    text("The goal is to gather 50 other snakes.\n" +
+        "\n" +
+        "Use the ➝ to go right\n" +
+        "Use the ← to go left\n" +
+        "Use the ↑ to go up, and\n" +
+        "Use the ↓ to go down.\n" +
+        "\n" +
+        "Avoid hitting the corners, because you will lose.\n" +
+        "Also, avoid touching the black snakes, as they are\n" +
+        "poisonous and will kill you.",
+        20, 150);
+
+    fill(255, 105, 180);
+    textSize(24);
+    text("Press SPACE to start", 200, 420);
 }
 
 //function to create snake object, with location and speed
@@ -125,40 +206,122 @@ function Snake() {
         //When snake touches the corners, players dies
         if (this.x < 0) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.x > 620) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.y < 0) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
         if (this.y > 460) {
             noLoop();
-            //Winning message
+            gameOver = true;
+
+            //Losing message
+            background(255);
             textSize(30);
-            stroke(0, 200, 255)
-            fill('pink');
-            text("You lost", 270, 250);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
+        }
+
+        if (dist(this.x, this.y, villain.x, villain.y) < 1) {
+            noLoop();
+            gameOver = true;
+            //Losing message
+            background(255);
+            textSize(30);
+            noStroke();
+            fill(255, 105, 180);
+            text("You lost", height / 2, 250);
+            text("LOL", 270, 300)
+            //Try again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill('black');
+            text("Click on R to try again.", 295, 350);
+            pop();
         }
 
         //to constrain snake getting off the grid
         this.x = constrain(this.x, 0, 620);
         this.y = constrain(this.y, 0, 460);
+
+        //To win the game, needs to eat at least 100 blue flies
+        if (score >= 50) {
+            noLoop();
+            //Winning Message
+            background(255);
+            textSize(30);
+            noStroke();
+            fill(255, 105, 180);
+            text("You Won!", height / 2, 250);
+            text("Yay!", 270, 300)
+            //Play again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill(255, 105, 180);
+            text("Click on R to play again.", 295, 350);
+            pop();
+        }
     }
 
     this.show = function () {
@@ -179,5 +342,24 @@ function Snake() {
         fill(255, 179, 248);
         rect(this.x, this.y, scl, scl);
         pop();
+    }
+
+    function mousePressed() {
+        //Instructions button
+        if (showInstructions) {
+
+            // Try Again button
+            if (mouseX > 232.5 && mouseX < 357.5 &&
+                mouseY > 325 && mouseY < 375) {
+
+                // Restart:
+                score = 0;
+                s = new Snake();
+                pickLocation();
+                showInstructions = false;
+                loop();
+                return;
+            }
+        }
     }
 }
