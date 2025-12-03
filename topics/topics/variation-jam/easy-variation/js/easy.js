@@ -207,7 +207,6 @@ function Snake() {
             fill(255, 105, 180);
             text("You lost", height / 2, 250);
             text("LOL", 270, 300)
-
             //Try again text
             push();
             textAlign(CENTER, CENTER);
@@ -219,14 +218,14 @@ function Snake() {
         if (this.x > 620) {
             noLoop();
             gameOver = true;
+
             //Losing message
             background(255);
             textSize(30);
-            stroke(0, 200, 255)
+            noStroke();
             fill(255, 105, 180);
             text("You lost", height / 2, 250);
             text("LOL", 270, 300)
-
             //Try again text
             push();
             textAlign(CENTER, CENTER);
@@ -238,14 +237,14 @@ function Snake() {
         if (this.y < 0) {
             noLoop();
             gameOver = true;
+
             //Losing message
             background(255);
             textSize(30);
-            stroke(0, 200, 255)
+            noStroke();
             fill(255, 105, 180);
             text("You lost", height / 2, 250);
             text("LOL", 270, 300)
-
             //Try again text
             push();
             textAlign(CENTER, CENTER);
@@ -257,14 +256,14 @@ function Snake() {
         if (this.y > 460) {
             noLoop();
             gameOver = true;
+
             //Losing message
             background(255);
             textSize(30);
-            stroke(0, 200, 255)
+            noStroke();
             fill(255, 105, 180);
             text("You lost", height / 2, 250);
             text("LOL", 270, 300)
-
             //Try again text
             push();
             textAlign(CENTER, CENTER);
