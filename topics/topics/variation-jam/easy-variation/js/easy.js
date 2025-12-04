@@ -120,7 +120,7 @@ function restartGame() {
     s = new Snake();
     pickLocation();
     showInstructions = false;
-    loop();  // resume p5 draw loop
+    loop();
 }
 
 
@@ -280,16 +280,20 @@ function Snake() {
         //To win the game, needs to eat at least 100 blue flies
         if (score >= 25) {
             noLoop();
-            // background("white");
-
-            // //Winning message
-            // textSize(30);
-            // stroke(0, 200, 255)
-            // fill('pink');
-            // text("𓃗", 320, 200);
-            // text("𝓨𝓪𝔂𝔂!!\n" +
-            //     "𝓨𝓸𝓾 𝓹𝓻𝓸𝓽𝓮𝓬𝓽𝓮𝓭 𝓽𝓱𝓮 𝓹𝓪𝓵𝓪𝓬𝓮!\n" +
-            //     "𝓣𝓱𝓮 𝓾𝓷𝓲𝓬𝓸𝓻𝓷𝓼 𝓪𝓻𝓮 𝓼𝓸 𝓹𝓻𝓸𝓾𝓭 𝓸𝓯 𝔂𝓸𝓾!", 320, 260);
+            //Winning Message
+            background(255);
+            textSize(30);
+            noStroke();
+            fill(255, 105, 180);
+            text("You Won!", height / 2, 250);
+            text("Yay!", 270, 300)
+            //Play again text
+            push();
+            textAlign(CENTER, CENTER);
+            textSize(24);
+            fill(255, 105, 180);
+            text("Click on R to play again.", 295, 350);
+            pop();
         }
     }
 
@@ -318,7 +322,7 @@ function mousePressed() {
     //Instructions button
     if (showInstructions) {
 
-        // Try Again button (same numbers as your rect)
+
         if (mouseX > 232.5 && mouseX < 357.5 &&
             mouseY > 325 && mouseY < 375) {
 
@@ -327,7 +331,7 @@ function mousePressed() {
             s = new Snake();
             pickLocation();
             showInstructions = false;
-            loop(); // resume draw loop
+            loop();
             return;
         }
     }
