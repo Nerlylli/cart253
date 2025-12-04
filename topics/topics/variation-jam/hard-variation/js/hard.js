@@ -303,7 +303,7 @@ function Snake() {
             pop();
         }
 
-        if (dist(this.x, this.y, villain.x, villain.y) < 1) {
+        if (dist(this.x, this.y, villain.x, villain.y) < scl) {
             noLoop();
             gameOver = true;
             //Losing message
