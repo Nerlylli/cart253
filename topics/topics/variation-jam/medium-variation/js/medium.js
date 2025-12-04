@@ -96,8 +96,9 @@ function drawScore() {
     text("Score\n" + score, 10, 30);
 }
 
-/**
- * This will be called whenever a key is pressed while the red variation is active
+/**The keys to press to
+ * Restart the game
+ * Play the game
  */
 function keyPressed(event) {
     if (showInstructions && key === " ") {
