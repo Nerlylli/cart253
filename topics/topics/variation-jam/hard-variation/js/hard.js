@@ -5,6 +5,9 @@
  * VARATION
  * Hard: Avoid the black snake that is following you. 
  * 
+ * Inspired by P5 Snake Game by Viv-Galinari
+ * (https://editor.p5js.org/Viv-Galinari/sketches/H1FqlMT5Z)
+ * 
  * HOW TO PLAY
  * 1. Read the instructions
  * 2. Press Space to start
