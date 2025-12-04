@@ -79,6 +79,7 @@ function draw() {
     //if snake eat food, pick location
     if (s.eat(food)) {
         pickLocation();
+        pickVillainLocation(); //the villain follows, but its position changes everytime food is eaten
     }
     // s.death();
     s.update();
