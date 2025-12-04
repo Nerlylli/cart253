@@ -158,8 +158,8 @@ function drawInstructions() {
 
     fill(255, 105, 180);
     textSize(32);
-    text("SNAKE GAME", 231, 50);
-    text("Level Medium", height / 2, 80);
+    text("SNAKE GAME", 210, 50);
+    text("Level Hard", height / 2, 80);
 
     fill(255);
     textSize(20);
@@ -172,8 +172,8 @@ function drawInstructions() {
         "Use the ↓ to go down.\n" +
         "\n" +
         "Avoid hitting the corners, because you will lose.\n" +
-        "Also, avoid touching the black snakes, as they are\n" +
-        "poisonous and will kill you.",
+        "Also, beware of the black snake that follows you\n" +
+        "It is poisonous and will kill you if you touch it.",
         20, 150);
 
     fill(255, 105, 180);
