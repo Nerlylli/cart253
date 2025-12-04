@@ -4,20 +4,15 @@
  * 
  * DESCRIPTION OF CODE
  * 
- * WHAT TO ADD
- * When player dies, message with buttons
-    *Play again
-    *Change Variations
- * 
  * VARATIONS
- * 1. Normal versiom
- * 2. Avoid the "color" snake
- * 3. The "color" snake is following you
+ * Easy version: Gather 25 snakes
  * 
  * HOW TO PLAY
- * 1. Press Play at the top
- * 2. Click on dark grey canvas (before snake hit the wall)
- * 3. Use key arrows to move snake
+ * 1. Read the instructions
+ * 2. Press Space to start
+ * 3. Use key arrows to move the snake
+ * 4. Avoid the corners. It will make you lose the game.
+ * 5. Gather 25 food/snakes, and win.
  */
 
 "use strict";

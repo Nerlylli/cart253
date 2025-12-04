@@ -3,7 +3,7 @@
  * Nerly Cadet
  * 
  * VARATION
- * Medium: Avoid the black snake. 
+ * Hard: Avoid the black snake that is following you. 
  * 
  * HOW TO PLAY
  * 1. Read the instructions
