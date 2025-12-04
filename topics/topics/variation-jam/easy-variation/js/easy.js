@@ -135,7 +135,7 @@ function drawInstructions() {
     fill(255);
     textSize(20);
     text("HOW TO PLAY:", 20, 125);
-    text("The goal is to gather 50 other snakes\n" +
+    text("The goal is to gather 25 other snakes\n" +
         "\n" +
         "Use the ➝ to go right\n" +
         "Use the ← to go left\n" +
@@ -278,7 +278,7 @@ function Snake() {
         this.y = constrain(this.y, 0, 460);
 
         //To win the game, needs to eat at least 100 blue flies
-        if (score >= 50) {
+        if (score >= 25) {
             noLoop();
             // background("white");
 
